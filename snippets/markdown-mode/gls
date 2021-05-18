@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: gls
+# key:gls
+# --
+\begingl
+\glpreamble $1//
+\gla $2//
+\glb $3//
+\glft \`$4\'//
+\endgl$0

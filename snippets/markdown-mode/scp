@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name:scp
+# key:scp
+# --
+[$1]{.smallcaps}$0
