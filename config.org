@@ -429,7 +429,6 @@ Map directories/files/functions.
 (map!
  :leader
  :prefix "k"
- :desc "Open treemacs" "t" #'treemacs
  :desc "Open file with external app" "e" #'open-in-external-app
  :desc "Open research in dired" "r" (lambda () (interactive) (find-file "~/repos/research"))
  :desc "Search in bibliography" "b" #'ivy-bibtex
