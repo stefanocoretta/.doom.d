@@ -84,7 +84,6 @@
 (map!
  :leader
  :prefix "k"
- :desc "Open treemacs" "t" #'treemacs
  :desc "Open file with external app" "e" #'open-in-external-app
  :desc "Open research in dired" "r" (lambda () (interactive) (find-file "~/repos/research"))
  :desc "Search in bibliography" "b" #'ivy-bibtex
@@ -164,6 +163,9 @@
 
 (add-to-list 'auto-mode-alist
              '("\\.secrets\\'" . ess-r-mode))
+
+(add-to-list 'auto-mode-alist
+             '("\\.rstheme\\'" . css-mode))
 
 (load! "praat-mode.el")
 

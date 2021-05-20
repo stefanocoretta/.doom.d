@@ -697,6 +697,13 @@ Auto =ess-r-mode= with =.secrets= file.
 (add-to-list 'auto-mode-alist
              '("\\.secrets\\'" . ess-r-mode))
 #+end_src
+
+Auto =css-mode= with =rstheme= file.
+
+#+begin_src emacs-lisp
+(add-to-list 'auto-mode-alist
+             '("\\.rstheme\\'" . css-mode))
+#+end_src
 * Praat
 Use =praat-mode=.
 
