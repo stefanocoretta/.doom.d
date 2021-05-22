@@ -352,19 +352,20 @@ This code is written to the =init.el= to select which modules to load.
 #+end_src
 
 ** Typography
-Set monospace and variable-width typefaces.
+Set fixed-pitch and variable-pitch typefaces.
 
 #+begin_src emacs-lisp
-(setq doom-font (font-spec :family "MesloLGS NF" :size 14)
-      doom-big-font (font-spec :family "MesloLGS NF" :size 20)
+(setq doom-font (font-spec :family "Hasklug Nerd Font Mono" :size 14)
+      doom-big-font (font-spec :family "Hasklug Nerd Font Mono" :size 20)
       doom-variable-pitch-font (font-spec :family "Lato" :size 14)
 )
 #+end_src
 
-Allow mixed typefaces in a buffer. This is particularly useful for Org mode, so I can mix source and prose blocks in the same document.
+Allow mixed typefaces in a buffer.
 
 #+begin_src emacs-lisp
-(add-hook! 'org-mode-hook #'mixed-pitch-mode)
+(add-hook! 'org-mode-hook #'mixed-pitch-mode
+           'markdown-mode-hook #'mixed-pitch-mode )
 (setq mixed-pitch-variable-pitch-cursor nil)
 #+end_src
 
