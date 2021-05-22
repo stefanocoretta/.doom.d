@@ -61,12 +61,13 @@
 ;; clients, file templates and snippets.
 (setq user-full-name "Stefano Coretta")
 
-(setq doom-font (font-spec :family "MesloLGS NF" :size 14)
-      doom-big-font (font-spec :family "MesloLGS NF" :size 20)
+(setq doom-font (font-spec :family "Hasklug Nerd Font Mono" :size 14)
+      doom-big-font (font-spec :family "Hasklug Nerd Font Mono" :size 20)
       doom-variable-pitch-font (font-spec :family "Lato" :size 14)
 )
 
-(add-hook! 'org-mode-hook #'mixed-pitch-mode)
+(add-hook! 'org-mode-hook #'mixed-pitch-mode
+           'markdown-mode-hook #'mixed-pitch-mode )
 (setq mixed-pitch-variable-pitch-cursor nil)
 
 (setq emojify-display-style 'unicode)
