@@ -66,8 +66,7 @@
       doom-variable-pitch-font (font-spec :family "Lato" :size 14)
 )
 
-(add-hook! 'org-mode-hook #'mixed-pitch-mode
-           'markdown-mode-hook #'mixed-pitch-mode )
+(add-hook! 'org-mode-hook #'mixed-pitch-mode )
 (setq mixed-pitch-variable-pitch-cursor nil)
 
 (setq emojify-display-style 'unicode)

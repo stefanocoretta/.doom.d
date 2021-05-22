@@ -364,8 +364,7 @@ Set fixed-pitch and variable-pitch typefaces.
 Allow mixed typefaces in a buffer.
 
 #+begin_src emacs-lisp
-(add-hook! 'org-mode-hook #'mixed-pitch-mode
-           'markdown-mode-hook #'mixed-pitch-mode )
+(add-hook! 'org-mode-hook #'mixed-pitch-mode )
 (setq mixed-pitch-variable-pitch-cursor nil)
 #+end_src
 
