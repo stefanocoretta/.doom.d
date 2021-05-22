@@ -155,7 +155,7 @@
        ;;nim               ; python + lisp at the speed of c
        ;;nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
-       org               ; organize your plain life in plain text
+       (org +roam)               ; organize your plain life in plain text
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
@@ -199,10 +199,10 @@
 
 (fringe-mode 50)
 
-(add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
-
 (use-package forge
   :after magit)
+
+(add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
 
 (defun open-in-external-app (&optional @fname)
   "Open the current file or dired marked files in external app.

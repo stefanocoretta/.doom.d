@@ -80,7 +80,7 @@
 
 (setq display-line-numbers-type t)
 
-(setq async-shell-command-display-buffer nil)
+;; (setq async-shell-command-display-buffer nil)
 
 (map!
  :leader
@@ -104,17 +104,18 @@
 
 (setq projectile-switch-project-action #'projectile-commander)
 
-(setq all-the-icons-ivy-file-commands
-      '(counsel-find-file counsel-file-jump counsel-recentf counsel-projectile-find-file counsel-projectile-find-dir projectile-find-file))
+(after! org
+  (setq org-agenda-files '("/Users/ste/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/agenda.org")))
 
 (after! org
   (map! :map org-mode-map
         :n "M-j" #'org-metadown
-        :n "M-k" #'org-metaup)
+        :n "M-k" #'org-metaup ))
+
+(after! org
   (setq org-priority-faces '((?A :foreground "#e45649")
                              (?B :foreground "#da8548")
-                             (?C :foreground "#0098dd"))
-        org-agenda-files '("/Users/ste/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/agenda.org")))
+                             (?C :foreground "#0098dd"))))
 
 (use-package org-fancy-priorities
   :ensure t
@@ -122,11 +123,17 @@
   :config
   (setq org-fancy-priorities-list '("⬢" "⬢" "⬢")))
 
+(setq org-roam-directory "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/roam" )
+
+(setq deft-directory "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/deft"
+      deft-extensions '("org")
+      deft-recursive t)
+
 (setq magit-repository-directories
       '(("~/repos" . 2)))
 
 (setq magit-repolist-column-flag-alist
-             '((magit-untracked-files . "   ⚪️    ")
+             '((magit-untracked-files . "   ❕️    ")
                (magit-unstaged-files . "   🟠    ")
                (magit-staged-files . "   🟢    ")))
 
@@ -144,12 +151,11 @@
 
 (setq auth-sources '("~/.authinfo"))
 
+(setq all-the-icons-ivy-file-commands
+      '(counsel-find-file counsel-file-jump counsel-recentf counsel-projectile-find-file counsel-projectile-find-dir projectile-find-file))
+
 (after! dired
   (add-hook 'dired-mode-hook 'treemacs-icons-dired-mode))
-
-(setq deft-directory "~/repos/notes"
-      deft-extensions '("org")
-      deft-recursive t)
 
 (setq bibtex-autokey-name-year-separator ""
       bibtex-autokey-year-title-separator ""

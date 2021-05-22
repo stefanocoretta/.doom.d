@@ -56,11 +56,11 @@
 
 (package! emojify)
 
-(package! pandoc-mode)
-
 (package! org-fancy-priorities)
 
 (package! forge)
+
+(package! pandoc-mode)
 
 (package! treemacs-evil)
 (package! treemacs-projectile)
