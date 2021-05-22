@@ -1,5 +1,11 @@
 ;;; lexurgy-mode.el --- Lexurgy sound change applier in Emacs
 
+;; Author: Stefano Coretta <stefano.coretta@gmail.com>
+;; Created: 2021-05-22
+;; Version: 0.1.0 2021-05-22
+;;
+;; Keywords: lexurgy
+
 (defvar lexurgy-mode-syntax-table nil
   "Syntax table in use in lexurgy-mode buffers.")
 
