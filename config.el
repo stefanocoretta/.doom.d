@@ -173,11 +173,11 @@
 (add-to-list 'auto-mode-alist
              '("\\.rstheme\\'" . css-mode))
 
-(load! "praat-mode.el")
+(load! "praat-script-mode.el")
 
 (setq load-path (cons "~/emacs" load-path))
-(autoload 'praat-mode "praat" "Enter Praat mode." t)
-(setq auto-mode-alist (cons '("\\.praat$" . praat-mode) auto-mode-alist))
+(autoload 'praat-script-mode "praat" "Enter Praat mode." t)
+(setq auto-mode-alist (cons '("\\.praat$" . praat-script-mode) auto-mode-alist))
 
 (load! "lexurgy-mode.el")
 
