@@ -418,10 +418,10 @@ Increase fringe width.
 (fringe-mode 50)
 #+end_src
 
-Don't open buffer when running asynchronous shell command.
+Do+n't+ open buffer when running asynchronous shell command.
 
 #+begin_src emacs-lisp
-(setq async-shell-command-display-buffer nil)
+;; (setq async-shell-command-display-buffer nil)
 #+end_src
 ** Custom keymaps
 Map directories/files/functions.
