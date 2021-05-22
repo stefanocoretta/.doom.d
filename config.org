@@ -300,7 +300,7 @@ This code is written to the =init.el= to select which modules to load.
        ;;nim               ; python + lisp at the speed of c
        ;;nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
-       org               ; organize your plain life in plain text
+       (org +roam)               ; organize your plain life in plain text
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
@@ -447,7 +447,7 @@ Use =raw_attribute=.
     ("C++" . c++-mode) ("screen" . shell-script-mode) ("shell" . sh-mode)
     ("bash" . sh-mode) ("=latex" . latex-mode)))
 #+end_src
-* Project management and navigation
+* Project management
 ** Projectile
 Set projectile search path and disable automatic discover.
 
@@ -462,40 +462,34 @@ Open =projectile-commander= when switching projects (see [[https://docs.projecti
 #+begin_src emacs-lisp
 (setq projectile-switch-project-action #'projectile-commander)
 #+end_src
-** Ivy
-Add =all-the-icons= in =projectile-find-file=.
+** Org-mode
+*** Org Agenda
+Set agenda file.
 
 #+begin_src emacs-lisp
-(setq all-the-icons-ivy-file-commands
-      '(counsel-find-file counsel-file-jump counsel-recentf counsel-projectile-find-file counsel-projectile-find-dir projectile-find-file))
-#+end_src
-** Pandoc
-Use =pandoc-mode=.
-
-#+begin_src emacs-lisp :tangle packages.el
-(package! pandoc-mode)
+(after! org
+  (setq org-agenda-files '("/Users/ste/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/agenda.org")))
 #+end_src
 
-Autoload with markdown.
-
-#+begin_src emacs-lisp :tangle init.el
-(add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
-#+end_src
-** Org-mode
 *** Keymaps and variables
 
 #+begin_src emacs-lisp
 (after! org
   (map! :map org-mode-map
         :n "M-j" #'org-metadown
-        :n "M-k" #'org-metaup)
-  (setq org-priority-faces '((?A :foreground "#e45649")
-                             (?B :foreground "#da8548")
-                             (?C :foreground "#0098dd"))
-        org-agenda-files '("/Users/ste/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/agenda.org")))
+        :n "M-k" #'org-metaup ))
 #+end_src
 
-*** Fancy priorities
+*** Priorities
+Change priority colours.
+
+#+begin_src emacs-lisp
+(after! org
+  (setq org-priority-faces '((?A :foreground "#e45649")
+                             (?B :foreground "#da8548")
+                             (?C :foreground "#0098dd"))))
+#+end_src
+
 Use =org-fancy-priorities= to customise priority cookies.
 
 #+begin_src emacs-lisp :tangle packages.el
@@ -508,6 +502,20 @@ Use =org-fancy-priorities= to customise priority cookies.
   :hook (org-mode . org-fancy-priorities-mode)
   :config
   (setq org-fancy-priorities-list '("⬢" "⬢" "⬢")))
+#+end_src
+*** Roam
+Set =roam= directory.
+
+#+begin_src emacs-lisp
+(setq org-roam-directory "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/roam" )
+#+end_src
+*** Deft
+Set =deft= directory.
+
+#+begin_src emacs-lisp
+(setq deft-directory "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/deft"
+      deft-extensions '("org")
+      deft-recursive t)
 #+end_src
 ** Git and magit
 Set magit repo directories and depth.
@@ -561,6 +569,26 @@ Set file with secrets. (For the configuration, see https://magit.vc/manual/ghub/
 (setq auth-sources '("~/.authinfo"))
 #+end_src
 
+** Pandoc
+Use =pandoc-mode=.
+
+#+begin_src emacs-lisp :tangle packages.el
+(package! pandoc-mode)
+#+end_src
+
+Autoload with markdown.
+
+#+begin_src emacs-lisp :tangle init.el
+(add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
+#+end_src
+* Project navigation
+** Ivy
+Add =all-the-icons= in =projectile-find-file=.
+
+#+begin_src emacs-lisp
+(setq all-the-icons-ivy-file-commands
+      '(counsel-find-file counsel-file-jump counsel-recentf counsel-projectile-find-file counsel-projectile-find-dir projectile-find-file))
+#+end_src
 ** Dired
 Use =treemacs= icons in =dired=.
 
@@ -569,7 +597,7 @@ Use =treemacs= icons in =dired=.
   (add-hook 'dired-mode-hook 'treemacs-icons-dired-mode))
 #+end_src
 
-Open file with external programme.
+Open file with external programme. Binded to =SPC k e=.
 
 #+begin_src emacs-lisp :tangle init.el
 (defun open-in-external-app (&optional @fname)
@@ -605,12 +633,7 @@ Version 2019-11-04 2021-02-16"
          (lambda ($fpath) (let ((process-connection-type nil))
                             (start-process "" nil "xdg-open" $fpath))) $file-list))))))
 #+end_src
-** Deft
-#+begin_src emacs-lisp
-(setq deft-directory "~/repos/notes"
-      deft-extensions '("org")
-      deft-recursive t)
-#+end_src
+
 ** Treemacs
 Install extras.
 
