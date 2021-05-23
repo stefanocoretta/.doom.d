@@ -197,8 +197,6 @@
 
 (add-hook 'after-init-hook #'global-emojify-mode)
 
-(fringe-mode 50)
-
 (use-package forge
   :after magit)
 

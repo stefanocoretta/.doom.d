@@ -71,7 +71,7 @@
 
 (setq emojify-display-style 'unicode)
 
-(add-to-list 'initial-frame-alist '(fullscreen . fullscreen))
+(add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
 (setq confirm-kill-emacs nil)
 
@@ -184,3 +184,5 @@
 (setq load-path (cons "~/emacs" load-path))
 (autoload 'lexurgy-mode "lexurgy" "Enter Lexurgy mode." t)
 (setq auto-mode-alist (cons '("\\.lsc$" . lexurgy-mode) auto-mode-alist))
+(autoload 'lexurgy-wlm-mode "lexurgy wlm" "Enter Lexurgy WLM mode." t)
+(setq auto-mode-alist (cons '("\\.wl\\(m\\|i\\)$" . lexurgy-wlm-mode) auto-mode-alist))
