@@ -387,10 +387,10 @@ Use unicode emojis.
 #+end_src
 
 ** Framing
-Open emacs in macOS native fullscreen.
+Open emacs in full-size (macOS Zoom).
 
 #+begin_src emacs-lisp
-(add-to-list 'initial-frame-alist '(fullscreen . fullscreen))
+(add-to-list 'initial-frame-alist '(fullscreen . maximized))
 #+end_src
 
 Disable exit confirmation.
