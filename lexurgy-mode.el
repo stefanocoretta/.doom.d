@@ -6,6 +6,11 @@
 ;;
 ;; Keywords: lexurgy
 
+;;
+;; Main mode
+;;
+;; The lexurgy-mode is used to highlight .lsc files.
+
 (defvar lexurgy-mode-syntax-table nil
   "Syntax table in use in lexurgy-mode buffers.")
 
@@ -32,3 +37,21 @@
   (setq font-lock-defaults '(lexurgy-font-lock-keywords nil nil ((?_ . "w")))))
 
 (provide 'lexurgy-mode)
+
+;;
+;; WLM mode
+;;
+;; The lexurgy-wlm-mode provides syntax highlighting for .wlm files.
+
+(defconst lexurgy-wlm-font-lock
+  (eval-when-compile
+    (list (cons (regexp-opt '("=>" "/" "_" "+" "-" "*" ",")) 'font-lock-constant-face)
+          '("^\\(\\w+\\)$" (1 font-lock-type-face))
+          '("=> \\(.*\\)$" (1 font-lock-type-face)))))
+
+(define-derived-mode lexurgy-wlm-mode lexurgy-mode "Lexurgy WLM"
+  (setq font-lock-defaults '(lexurgy-wlm-font-lock nil nil ((?_ . "w")))))
+
+(provide 'lexurgy-wlm-mode)
+
+;;; lexurgy-mode.el ends here
