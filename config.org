@@ -740,4 +740,6 @@ Use =lexurgy-mode=.
 (setq load-path (cons "~/emacs" load-path))
 (autoload 'lexurgy-mode "lexurgy" "Enter Lexurgy mode." t)
 (setq auto-mode-alist (cons '("\\.lsc$" . lexurgy-mode) auto-mode-alist))
+(autoload 'lexurgy-wlm-mode "lexurgy wlm" "Enter Lexurgy WLM mode." t)
+(setq auto-mode-alist (cons '("\\.wl\\(m\\|i\\)$" . lexurgy-wlm-mode) auto-mode-alist))
 #+end_src
