@@ -450,11 +450,6 @@ Set projectile search path and disable automatic discover.
       projectile-auto-discover nil)
 #+end_src
 
-Open =projectile-commander= when switching projects (see [[https://docs.projectile.mx/projectile/configuration.html#projectile-commander][docs]]).
-
-#+begin_src emacs-lisp
-(setq projectile-switch-project-action #'projectile-commander)
-#+end_src
 ** Org-mode
 *** Org Agenda
 Set agenda file.
