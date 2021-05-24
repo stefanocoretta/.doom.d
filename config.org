@@ -361,11 +361,11 @@ Set fixed-pitch and variable-pitch typefaces.
 )
 #+end_src
 
-Allow mixed typefaces in a buffer.
++Allow mixed typefaces in a buffer.+
 
 #+begin_src emacs-lisp
-(add-hook! 'org-mode-hook #'mixed-pitch-mode )
-(setq mixed-pitch-variable-pitch-cursor nil)
+;; (add-hook! 'org-mode-hook #'mixed-pitch-mode )
+;; (setq mixed-pitch-variable-pitch-cursor nil)
 #+end_src
 
 Use =emojify=.

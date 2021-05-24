@@ -66,8 +66,8 @@
       doom-variable-pitch-font (font-spec :family "Lato" :size 14)
 )
 
-(add-hook! 'org-mode-hook #'mixed-pitch-mode )
-(setq mixed-pitch-variable-pitch-cursor nil)
+;; (add-hook! 'org-mode-hook #'mixed-pitch-mode )
+;; (setq mixed-pitch-variable-pitch-cursor nil)
 
 (setq emojify-display-style 'unicode)
 
@@ -100,8 +100,6 @@
 (setq projectile-project-search-path
       '("~/repos" "~/repos/conlang" "~/repos/research" "~/repos/software" "~/repos/typography" "~/repos/web")
       projectile-auto-discover nil)
-
-(setq projectile-switch-project-action #'projectile-commander)
 
 (after! org
   (setq org-agenda-files '("/Users/ste/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/agenda.org")))
