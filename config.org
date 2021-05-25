@@ -548,8 +548,8 @@ Use =forge= to connect to GitHub..
 We need to load =forge= after =magit=, since it is not loaded automatically.
 
 #+begin_src emacs-lisp :tangle init.el
-(use-package forge
-  :after magit)
+;; (use-package forge
+;;   :after magit)
 #+end_src
 
 Set file with secrets. (For the configuration, see https://magit.vc/manual/ghub/Getting-Started.html#Getting-Started)
