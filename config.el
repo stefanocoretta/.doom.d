@@ -66,11 +66,6 @@
       doom-variable-pitch-font (font-spec :family "Lato" :size 14)
 )
 
-;; (add-hook! 'org-mode-hook #'mixed-pitch-mode )
-;; (setq mixed-pitch-variable-pitch-cursor nil)
-
-(setq emojify-display-style 'unicode)
-
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
 (setq confirm-kill-emacs nil)
@@ -119,6 +114,10 @@
   :hook (org-mode . org-fancy-priorities-mode)
   :config
   (setq org-fancy-priorities-list '("⬢" "⬢" "⬢")))
+
+(use-package! org-bullets
+  :after org
+  :hook (org-mode . org-bullets-mode))
 
 (setq org-roam-directory "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/roam" )
 

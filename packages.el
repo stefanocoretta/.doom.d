@@ -54,11 +54,11 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
-(package! emojify)
-
 (package! org-fancy-priorities)
 
-(package! forge)
+(package! org-bullets)
+;; also need magit-section
+(package! magit-section)
 
 (package! pandoc-mode)
 
