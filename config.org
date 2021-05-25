@@ -536,20 +536,7 @@ Customise repolist columns.
     ("Path"     99 magit-repolist-column-path nil)))
 #+end_src
 
-Use =forge= to connect to GitHub..
-
-#+begin_src emacs-lisp :tangle packages.el
-(package! forge)
-#+end_src
-
-We need to load =forge= after =magit=, since it is not loaded automatically.
-
-#+begin_src emacs-lisp :tangle init.el
-;; (use-package forge
-;;   :after magit)
-#+end_src
-
-Set file with secrets. (For the configuration, see https://magit.vc/manual/ghub/Getting-Started.html#Getting-Started)
+Set author secrets for =forge=.
 
 #+begin_src emacs-lisp
 (setq auth-sources '("~/.authinfo"))
