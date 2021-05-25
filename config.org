@@ -486,7 +486,7 @@ Use =org-fancy-priorities= to customise priority cookies.
 #+end_src
 
 #+begin_src emacs-lisp
-(use-package org-fancy-priorities
+(use-package! org-fancy-priorities
   :ensure t
   :hook (org-mode . org-fancy-priorities-mode)
   :config

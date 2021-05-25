@@ -197,8 +197,8 @@
 
 (add-hook 'after-init-hook #'global-emojify-mode)
 
-(use-package forge
-  :after magit)
+;; (use-package forge
+;;   :after magit)
 
 (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
 
@@ -245,7 +245,7 @@ Version 2019-11-04 2021-02-16"
          (n (count-matches (string separator) (point-at-bol) (point-at-eol)))
          (colors (loop for i from 0 to 1.0 by (/ 1.0 n)
                        collect (apply #'color-rgb-to-hex
-                                      (color-hsl-to-rgb i 0.3 0.5)))))
+                                      (color-hsl-to-rgb i 0.7 0.5)))))
     (loop for i from 1 to n by 1
           for c in colors
           for r = (format "^\\([^%c\n]+%c\\)\\{%d\\}" separator separator i)

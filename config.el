@@ -64,6 +64,7 @@
 (setq doom-font (font-spec :family "Hasklug Nerd Font Mono" :size 14)
       doom-big-font (font-spec :family "Hasklug Nerd Font Mono" :size 20)
       doom-variable-pitch-font (font-spec :family "Lato" :size 14)
+      doom-unicode-font (font-spec :family "Hasklug Nerd Font Mono" :size 14)
 )
 
 ;; (add-hook! 'org-mode-hook #'mixed-pitch-mode )
@@ -114,7 +115,7 @@
                              (?B :foreground "#da8548")
                              (?C :foreground "#0098dd"))))
 
-(use-package org-fancy-priorities
+(use-package! org-fancy-priorities
   :ensure t
   :hook (org-mode . org-fancy-priorities-mode)
   :config
