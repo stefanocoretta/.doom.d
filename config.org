@@ -463,6 +463,21 @@ Use =org-fancy-priorities= to customise priority cookies.
   :config
   (setq org-fancy-priorities-list '("⬢" "⬢" "⬢")))
 #+end_src
+*** Bullets
+
+Use =org-bullets=.
+
+#+begin_src emacs-lisp :tangle packages.el
+(package! org-bullets)
+;; also need magit-section
+(package! magit-section)
+#+end_src
+
+#+begin_src emacs-lisp
+(use-package! org-bullets
+  :after org
+  :hook (org-mode . org-bullets-mode))
+#+end_src
 *** Roam
 Set =roam= directory.
 
