@@ -352,12 +352,13 @@ This code is written to the =init.el= to select which modules to load.
 #+end_src
 
 ** Typography
-Set fixed-pitch and variable-pitch typefaces.
+Set typefaces.
 
 #+begin_src emacs-lisp
 (setq doom-font (font-spec :family "Hasklug Nerd Font Mono" :size 14)
       doom-big-font (font-spec :family "Hasklug Nerd Font Mono" :size 20)
       doom-variable-pitch-font (font-spec :family "Lato" :size 14)
+      doom-unicode-font (font-spec :family "Hasklug Nerd Font Mono" :size 14)
 )
 #+end_src
 
