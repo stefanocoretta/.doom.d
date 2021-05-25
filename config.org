@@ -382,12 +382,6 @@ Always show line numbers in the gutter.
 #+begin_src emacs-lisp
 (setq display-line-numbers-type t)
 #+end_src
-
-+Don't+ open buffer when running asynchronous shell command.
-
-#+begin_src emacs-lisp
-;; (setq async-shell-command-display-buffer nil)
-#+end_src
 ** Custom keymaps
 Map directories/files/functions.
 

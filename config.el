@@ -74,8 +74,6 @@
 
 (setq display-line-numbers-type t)
 
-;; (setq async-shell-command-display-buffer nil)
-
 (map!
  :leader
  :prefix "k"
