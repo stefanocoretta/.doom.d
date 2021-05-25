@@ -358,32 +358,6 @@ Set typefaces.
       doom-variable-pitch-font (font-spec :family "Lato" :size 14)
 )
 #+end_src
-
-+Allow mixed typefaces in a buffer.+
-
-#+begin_src emacs-lisp
-;; (add-hook! 'org-mode-hook #'mixed-pitch-mode )
-;; (setq mixed-pitch-variable-pitch-cursor nil)
-#+end_src
-
-Use =emojify=.
-
-#+begin_src emacs-lisp :tangle packages.el
-(package! emojify)
-#+end_src
-
-Set emojify global mode.
-
-#+begin_src emacs-lisp :tangle init.el
-(add-hook 'after-init-hook #'global-emojify-mode)
-#+end_src
-
-Use unicode emojis.
-
-#+begin_src emacs-lisp
-(setq emojify-display-style 'unicode)
-#+end_src
-
 ** Framing
 Open emacs in full-size (macOS Zoom).
 
