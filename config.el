@@ -83,6 +83,55 @@
  :desc "Open bibliograpy file" "B" (lambda () (interactive) (find-file "~/texmf/bibtex/bib/linguistics.bib"))
  :desc "Open repository status list" "s" #'magit-list-repositories)
 
+(after! dired
+  (add-hook 'dired-mode-hook 'treemacs-icons-dired-mode))
+
+(setq all-the-icons-ivy-file-commands
+      '(counsel-find-file counsel-file-jump counsel-recentf counsel-projectile-find-file counsel-projectile-find-dir projectile-find-file))
+
+(setq magit-repository-directories
+      '(("~/repos" . 2)))
+
+(setq magit-repolist-column-flag-alist
+             '((magit-untracked-files . "   ❕️    ")
+               (magit-unstaged-files . "   🟠    ")
+               (magit-staged-files . "   🟢    ")))
+
+(setq magit-repolist-columns
+  '(("Name"     25 magit-repolist-column-ident nil)
+    ("Version"  25 magit-repolist-column-version nil)
+    ("Status"   8 magit-repolist-column-flag nil)
+    ("B<U"      3 magit-repolist-column-unpulled-from-upstream
+      ((:right-align t)
+       (:help-echo "Upstream changes not in branch")))
+    ("B>U"      3 magit-repolist-column-unpushed-to-upstream
+      ((:right-align t)
+       (:help-echo "Local changes not in upstream")))
+    ("Path"     99 magit-repolist-column-path nil)))
+
+(setq auth-sources '("~/.authinfo"))
+
+(setq projectile-project-search-path
+      '("~/repos" "~/repos/conlang" "~/repos/research" "~/repos/software" "~/repos/typography" "~/repos/web")
+      projectile-auto-discover nil)
+
+(setq bibtex-autokey-name-year-separator ""
+      bibtex-autokey-year-title-separator ""
+      bibtex-autokey-year-length 4
+      bibtex-autokey-titleword-length 0
+      bibtex-autokey-titlewords 0)
+
+(setq bibtex-completion-bibliography '("~/texmf/bibtex/bib/linguistics.bib")
+      bibtex-completion-library-path '("/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/biblio"))
+
+(load! "lexurgy-mode.el")
+
+(setq load-path (cons "~/emacs" load-path))
+(autoload 'lexurgy-mode "lexurgy" "Enter Lexurgy mode." t)
+(setq auto-mode-alist (cons '("\\.lsc$" . lexurgy-mode) auto-mode-alist))
+(autoload 'lexurgy-wlm-mode "lexurgy wlm" "Enter Lexurgy WLM mode." t)
+(setq auto-mode-alist (cons '("\\.wl\\(m\\|i\\)$" . lexurgy-wlm-mode) auto-mode-alist))
+
 (setq markdown-code-lang-modes
   '(("ocaml" . tuareg-mode) ("elisp" . emacs-lisp-mode) ("ditaa" . artist-mode)
     ("asymptote" . asy-mode) ("dot" . fundamental-mode) ("sqlite" . sql-mode)
@@ -90,9 +139,19 @@
     ("C++" . c++-mode) ("screen" . shell-script-mode) ("shell" . sh-mode)
     ("bash" . sh-mode) ("=latex" . latex-mode)))
 
-(setq projectile-project-search-path
-      '("~/repos" "~/repos/conlang" "~/repos/research" "~/repos/software" "~/repos/typography" "~/repos/web")
-      projectile-auto-discover nil)
+(load! "praat-script-mode.el")
+
+(setq load-path (cons "~/emacs" load-path))
+(autoload 'praat-script-mode "praat" "Enter Praat mode." t)
+(setq auto-mode-alist (cons '("\\.praat$" . praat-script-mode) auto-mode-alist))
+
+(setq ess-ask-for-ess-directory nil)
+
+(add-to-list 'auto-mode-alist
+             '("\\.secrets\\'" . ess-r-mode))
+
+(add-to-list 'auto-mode-alist
+             '("\\.rstheme\\'" . css-mode))
 
 (after! org
   (setq org-agenda-files '("/Users/ste/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/agenda.org")))
@@ -122,62 +181,3 @@
 (setq deft-directory "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/deft"
       deft-extensions '("org")
       deft-recursive t)
-
-(setq magit-repository-directories
-      '(("~/repos" . 2)))
-
-(setq magit-repolist-column-flag-alist
-             '((magit-untracked-files . "   ❕️    ")
-               (magit-unstaged-files . "   🟠    ")
-               (magit-staged-files . "   🟢    ")))
-
-(setq magit-repolist-columns
-  '(("Name"     25 magit-repolist-column-ident nil)
-    ("Version"  25 magit-repolist-column-version nil)
-    ("Status"   8 magit-repolist-column-flag nil)
-    ("B<U"      3 magit-repolist-column-unpulled-from-upstream
-      ((:right-align t)
-       (:help-echo "Upstream changes not in branch")))
-    ("B>U"      3 magit-repolist-column-unpushed-to-upstream
-      ((:right-align t)
-       (:help-echo "Local changes not in upstream")))
-    ("Path"     99 magit-repolist-column-path nil)))
-
-(setq auth-sources '("~/.authinfo"))
-
-(setq all-the-icons-ivy-file-commands
-      '(counsel-find-file counsel-file-jump counsel-recentf counsel-projectile-find-file counsel-projectile-find-dir projectile-find-file))
-
-(after! dired
-  (add-hook 'dired-mode-hook 'treemacs-icons-dired-mode))
-
-(setq bibtex-autokey-name-year-separator ""
-      bibtex-autokey-year-title-separator ""
-      bibtex-autokey-year-length 4
-      bibtex-autokey-titleword-length 0
-      bibtex-autokey-titlewords 0)
-
-(setq bibtex-completion-bibliography '("~/texmf/bibtex/bib/linguistics.bib")
-      bibtex-completion-library-path '("/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/biblio"))
-
-(setq ess-ask-for-ess-directory nil)
-
-(add-to-list 'auto-mode-alist
-             '("\\.secrets\\'" . ess-r-mode))
-
-(add-to-list 'auto-mode-alist
-             '("\\.rstheme\\'" . css-mode))
-
-(load! "praat-script-mode.el")
-
-(setq load-path (cons "~/emacs" load-path))
-(autoload 'praat-script-mode "praat" "Enter Praat mode." t)
-(setq auto-mode-alist (cons '("\\.praat$" . praat-script-mode) auto-mode-alist))
-
-(load! "lexurgy-mode.el")
-
-(setq load-path (cons "~/emacs" load-path))
-(autoload 'lexurgy-mode "lexurgy" "Enter Lexurgy mode." t)
-(setq auto-mode-alist (cons '("\\.lsc$" . lexurgy-mode) auto-mode-alist))
-(autoload 'lexurgy-wlm-mode "lexurgy wlm" "Enter Lexurgy WLM mode." t)
-(setq auto-mode-alist (cons '("\\.wl\\(m\\|i\\)$" . lexurgy-wlm-mode) auto-mode-alist))

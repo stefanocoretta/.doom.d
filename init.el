@@ -195,8 +195,6 @@
        literate
        (default +bindings +smartparens))
 
-(add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
-
 (defun open-in-external-app (&optional @fname)
   "Open the current file or dired marked files in external app.
 When called in emacs lisp, if @fname is given, open that.
@@ -250,3 +248,5 @@ Version 2019-11-04 2021-02-16"
   (csv-highlight))
 
 (add-hook 'csv-mode-hook 'my-csv-mode-hook)
+
+(add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)

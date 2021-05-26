@@ -54,22 +54,22 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
-(package! org-fancy-priorities)
-
-(package! org-bullets)
-;; also need magit-section
-(package! magit-section)
-
-(package! pandoc-mode)
-
 (package! treemacs-evil)
 (package! treemacs-projectile)
 (package! treemacs-magit)
 (package! treemacs-icons-dired)
 (package! treemacs-all-the-icons)
 
-(package! csv-mode)
-
 (package! ivy-bibtex)
 
 (package! org-ref)
+
+(package! csv-mode)
+
+(package! pandoc-mode)
+
+(package! org-fancy-priorities)
+
+(package! org-bullets)
+;; also need magit-section
+(package! magit-section)
