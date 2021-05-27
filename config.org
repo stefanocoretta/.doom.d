@@ -159,9 +159,6 @@
 #+end_src
 #+html: </details>
 * Doom modules (package bundles)
-:PROPERTIES:
-:ID:       89efe49a-96b9-4661-8be5-68c534feb6f8
-:END:
 This code is written to the =init.el= to select which modules to load.
 
 #+html: <details><summary>init.el</summary>
