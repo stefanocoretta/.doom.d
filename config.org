@@ -340,7 +340,6 @@ This code is written to the =init.el= to select which modules to load.
        (default +bindings +smartparens))
 #+end_src
 
-
 * General config
 ** User info
 #+begin_src emacs-lisp
