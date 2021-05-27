@@ -339,6 +339,8 @@ This code is written to the =init.el= to select which modules to load.
        literate
        (default +bindings +smartparens))
 #+end_src
+
+
 * General config
 ** User info
 #+begin_src emacs-lisp
@@ -350,8 +352,8 @@ This code is written to the =init.el= to select which modules to load.
 Set typefaces.
 
 #+begin_src emacs-lisp
-(setq doom-font (font-spec :family "Hasklug Nerd Font" :size 14)
-      doom-big-font (font-spec :family "Hasklug Nerd Font" :size 24)
+(setq doom-font (font-spec :family "Hasklug Nerd Font Mono" :size 14)
+      doom-big-font (font-spec :family "Hasklug Nerd Font Mono" :size 24)
       doom-variable-pitch-font (font-spec :family "Lato" :size 14)
 )
 #+end_src
