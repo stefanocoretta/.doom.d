@@ -61,10 +61,12 @@
 ;; clients, file templates and snippets.
 (setq user-full-name "Stefano Coretta")
 
-(setq doom-font (font-spec :family "Hasklug Nerd Font" :size 14)
-      doom-big-font (font-spec :family "Hasklug Nerd Font" :size 24)
+(setq doom-font (font-spec :family "Hasklug Nerd Font Mono" :size 14)
+      doom-big-font (font-spec :family "Hasklug Nerd Font Mono" :size 24)
       doom-variable-pitch-font (font-spec :family "Lato" :size 14)
 )
+
+(setq tab-width 2)
 
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 

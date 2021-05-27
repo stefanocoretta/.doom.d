@@ -357,6 +357,12 @@ Set typefaces.
       doom-variable-pitch-font (font-spec :family "Lato" :size 14)
 )
 #+end_src
+
+Set tab width.
+
+#+begin_src emacs-lisp
+(setq tab-width 2)
+#+end_src
 ** Framing
 Open emacs in full-size (macOS Zoom).
 
