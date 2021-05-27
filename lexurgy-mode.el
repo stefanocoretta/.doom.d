@@ -41,7 +41,7 @@
 
 (defconst lexurgy-font-lock-keywords
   (eval-when-compile
-    (list '("\\(Class\\|Diacritic\\|Feature\\|Symbol\\)\\s-\\(\\w+\\)" (1 font-lock-keyword-face) (2 font-lock-function-name-face nil t))
+    (list '("\\(Class\\|Diacritic\\|Feature\\|Symbol\\)\\s-" (1 font-lock-keyword-face))
 
           '("\\<\\(Feature\\)\\>" (1 font-lock-keyword-face))
 
