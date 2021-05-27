@@ -45,6 +45,8 @@
 
           '("\\<\\(Feature\\)\\>" (1 font-lock-keyword-face))
 
+          '("Feature \\(\\w+\\)(" (1 font-lock-function-name-face))
+
           '("\\(\\(\\w\\|-\\|_\\)+\\):" (1 font-lock-type-face))
 
           (cons (regexp-opt '("[" "]" "{" "}" "@")) 'font-lock-builtin-face)
