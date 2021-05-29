@@ -339,6 +339,7 @@ This code is written to the =init.el= to select which modules to load.
        literate
        (default +bindings +smartparens))
 #+end_src
+#+html: </details>
 
 * General config
 ** User info
