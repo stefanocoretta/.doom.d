@@ -232,7 +232,7 @@ This code is written to the =init.el= to select which modules to load.
 
        :checkers
        (syntax +childframe)              ; tasing you for every semicolon you forget
-       (spell +hunspell) ; tasing you for misspelling mispelling
+       (spell +aspell) ; tasing you for misspelling mispelling
        ;;grammar           ; tasing grammar mistake every you make
 
        :tools
@@ -507,18 +507,12 @@ Set projectile search path and disable automatic discover.
       '("~/repos" "~/repos/conlang" "~/repos/research" "~/repos/software" "~/repos/typography" "~/repos/web")
       projectile-auto-discover nil)
 #+end_src
+** Spell-fu
+Set =ispell-dictionary=.
 
-** Treemacs
-Install extras.
-
-#+begin_src emacs-lisp :tangle packages.el
-(package! treemacs-evil)
-(package! treemacs-projectile)
-(package! treemacs-magit)
-(package! treemacs-icons-dired)
-(package! treemacs-all-the-icons)
+#+begin_src emacs-lisp
+(setq ispell-dictionary "en")
 #+end_src
-
 * Languages
 ** BibTeX
 Define auto-key generation.
