@@ -85,6 +85,9 @@
  :desc "Open bibliograpy file" "B" (lambda () (interactive) (find-file "~/texmf/bibtex/bib/linguistics.bib"))
  :desc "Open repository status list" "s" #'magit-list-repositories)
 
+(define-key evil-normal-state-map "u" 'undo-fu-only-undo)
+(define-key evil-normal-state-map "\C-r" 'undo-fu-only-redo)
+
 (after! dired
   (add-hook 'dired-mode-hook 'treemacs-icons-dired-mode))
 

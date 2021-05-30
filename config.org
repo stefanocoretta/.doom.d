@@ -400,6 +400,13 @@ Map directories/files/functions.
  :desc "Open bibliograpy file" "B" (lambda () (interactive) (find-file "~/texmf/bibtex/bib/linguistics.bib"))
  :desc "Open repository status list" "s" #'magit-list-repositories)
 #+end_src
+
+Bind =undo-fu=.
+
+#+begin_src emacs-lisp
+(define-key evil-normal-state-map "u" 'undo-fu-only-undo)
+(define-key evil-normal-state-map "\C-r" 'undo-fu-only-redo)
+#+end_src
 * Packages
 ** Dired
 Use =treemacs= icons in =dired=.
