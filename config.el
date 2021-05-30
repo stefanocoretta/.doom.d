@@ -88,9 +88,6 @@
 (define-key evil-normal-state-map "u" 'undo-fu-only-undo)
 (define-key evil-normal-state-map "\C-r" 'undo-fu-only-redo)
 
-(after! dired
-  (add-hook 'dired-mode-hook 'treemacs-icons-dired-mode))
-
 (setq all-the-icons-ivy-file-commands
       '(counsel-find-file counsel-file-jump counsel-recentf counsel-projectile-find-file counsel-projectile-find-dir projectile-find-file))
 
@@ -119,6 +116,8 @@
 (setq projectile-project-search-path
       '("~/repos" "~/repos/conlang" "~/repos/research" "~/repos/software" "~/repos/typography" "~/repos/web")
       projectile-auto-discover nil)
+
+(setq ispell-dictionary "en")
 
 (setq bibtex-autokey-name-year-separator ""
       bibtex-autokey-year-title-separator ""

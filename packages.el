@@ -54,12 +54,6 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
-(package! treemacs-evil)
-(package! treemacs-projectile)
-(package! treemacs-magit)
-(package! treemacs-icons-dired)
-(package! treemacs-all-the-icons)
-
 (package! ivy-bibtex)
 
 (package! org-ref)

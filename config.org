@@ -409,14 +409,7 @@ Bind =undo-fu=.
 #+end_src
 * Packages
 ** Dired
-Use =treemacs= icons in =dired=.
-
-#+begin_src emacs-lisp
-(after! dired
-  (add-hook 'dired-mode-hook 'treemacs-icons-dired-mode))
-#+end_src
-
-Open file with external programme. Binded to =SPC k e=.
+Open file with external program. Bound to =SPC k e=.
 
 #+begin_src emacs-lisp :tangle init.el
 (defun open-in-external-app (&optional @fname)
