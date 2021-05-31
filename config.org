@@ -659,11 +659,13 @@ Use =org-fancy-priorities= to customise priority cookies.
 #+end_src
 
 #+begin_src emacs-lisp
-(use-package! org-fancy-priorities
-  :ensure t
-  :hook (org-mode . org-fancy-priorities-mode)
-  :config
-  (setq org-fancy-priorities-list '("⬢" "⬢" "⬢")))
+(add-hook 'org-agenda-mode-hook 'org-fancy-priorities-mode)
+
+(after! org-fancy-priorities
+  (setq org-priority-faces '((?A :foreground "#e45649")
+                             (?B :foreground "#da8548")
+                             (?C :foreground "#0098dd"))
+        org-fancy-priorities-list '("⬢" "⬢" "⬢")))
 #+end_src
 ** Bullets
 
