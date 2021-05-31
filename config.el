@@ -158,23 +158,19 @@
              '("\\.rstheme\\'" . css-mode))
 
 (after! org
-  (setq org-agenda-files '("/Users/ste/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/agenda.org")))
+  (setq org-agenda-files '("/Users/ste/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/agenda.org"))
+  (setq org-agenda-span 14)
+  (setq org-agenda-start-day nil))
 
-(after! org
-  (map! :map org-mode-map
-        :n "M-j" #'org-metadown
-        :n "M-k" #'org-metaup ))
 
-(after! org
+
+(add-hook 'org-agenda-mode-hook 'org-fancy-priorities-mode)
+
+(after! org-fancy-priorities
   (setq org-priority-faces '((?A :foreground "#e45649")
                              (?B :foreground "#da8548")
-                             (?C :foreground "#0098dd"))))
-
-(use-package! org-fancy-priorities
-  :ensure t
-  :hook (org-mode . org-fancy-priorities-mode)
-  :config
-  (setq org-fancy-priorities-list '("⬢" "⬢" "⬢")))
+                             (?C :foreground "#0098dd"))
+        org-fancy-priorities-list '("⬢" "⬢" "⬢")))
 
 (use-package! org-bullets
   :after org
@@ -185,3 +181,8 @@
 (setq deft-directory "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/deft"
       deft-extensions '("org")
       deft-recursive t)
+
+(after! org
+  (map! :map org-mode-map
+        :n "M-j" #'org-metadown
+        :n "M-k" #'org-metaup ))

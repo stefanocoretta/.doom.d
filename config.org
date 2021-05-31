@@ -696,3 +696,11 @@ Set =deft= directory.
       deft-extensions '("org")
       deft-recursive t)
 #+end_src
+** Keymaps
+
+#+begin_src emacs-lisp
+(after! org
+  (map! :map org-mode-map
+        :n "M-j" #'org-metadown
+        :n "M-k" #'org-metaup ))
+#+end_src
