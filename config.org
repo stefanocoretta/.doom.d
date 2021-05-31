@@ -637,32 +637,22 @@ Auto =css-mode= with =rstheme= file.
 #+end_src
 * Org-mode
 ** Org Agenda
-Set agenda file.
+Set agenda file and other variables.
 
 #+begin_src emacs-lisp
 (after! org
-  (setq org-agenda-files '("/Users/ste/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/agenda.org")))
+  (setq org-agenda-files '("/Users/ste/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/agenda.org"))
+  (setq org-agenda-span 14)
+  (setq org-agenda-start-day nil))
 #+end_src
 
-** Keymaps and variables
+Start week on Monday.
 
 #+begin_src emacs-lisp
-(after! org
-  (map! :map org-mode-map
-        :n "M-j" #'org-metadown
-        :n "M-k" #'org-metaup ))
+
 #+end_src
 
 ** Priorities
-Change priority colours.
-
-#+begin_src emacs-lisp
-(after! org
-  (setq org-priority-faces '((?A :foreground "#e45649")
-                             (?B :foreground "#da8548")
-                             (?C :foreground "#0098dd"))))
-#+end_src
-
 Use =org-fancy-priorities= to customise priority cookies.
 
 #+begin_src emacs-lisp :tangle packages.el
