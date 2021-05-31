@@ -569,7 +569,6 @@ Customised so every column is coloured.
 
 (add-hook 'csv-mode-hook 'my-csv-mode-hook)
 #+end_src
-
 ** Lexurgy
 Use =lexurgy-mode=.
 
