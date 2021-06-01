@@ -361,7 +361,7 @@ Set typefaces.
 Set tab width.
 
 #+begin_src emacs-lisp
-(setq tab-width 2)
+(setq-default tab-width 2)
 #+end_src
 ** Framing
 Open emacs in full-size (macOS Zoom).

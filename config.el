@@ -66,7 +66,7 @@
       doom-variable-pitch-font (font-spec :family "Lato" :size 14)
 )
 
-(setq tab-width 2)
+(setq-default tab-width 2)
 
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
