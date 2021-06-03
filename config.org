@@ -705,7 +705,8 @@ Set agenda file and other variables.
 (after! org
   (setq org-agenda-files '("/Users/ste/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/agenda.org"))
   (setq org-agenda-span 14)
-  (setq org-agenda-start-day nil))
+  (setq org-agenda-start-day nil)
+  (setq calendar-week-start-day 1))
 #+end_src
 
 Start week on Monday.
