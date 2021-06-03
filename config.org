@@ -536,35 +536,32 @@ Use =zetteldeft=.
 Define keymaps.
 
 #+begin_src emacs-lisp
-(general-define-key
-  :prefix "SPC"
-  :non-normal-prefix "C-SPC"
-  :states '(normal visual motion emacs)
-  :keymaps 'override
-  "d"  '(nil :wk "deft")
-  "dd" '(deft :wk "deft")
-  "dD" '(zetteldeft-deft-new-search :wk "new search")
-  "dR" '(deft-refresh :wk "refresh")
-  "ds" '(zetteldeft-search-at-point :wk "search at point")
-  "dc" '(zetteldeft-search-current-id :wk "search current id")
-  "df" '(zetteldeft-follow-link :wk "follow link")
-  "dF" '(zetteldeft-avy-file-search-ace-window :wk "avy file other window")
-  "d." '(zetteldeft-browse :wk "browse")
-  "dh" '(zetteldeft-go-home :wk "go home")
-  "dl" '(zetteldeft-avy-link-search :wk "avy link search")
-  "dt" '(zetteldeft-avy-tag-search :wk "avy tag search")
-  "dT" '(zetteldeft-tag-buffer :wk "tag list")
-  "d#" '(zetteldeft-tag-insert :wk "insert tag")
-  "d/" '(zetteldeft-search-tag :wk "search tag")
-  "di" '(zetteldeft-find-file-id-insert :wk "insert id")
-  "dI" '(zetteldeft-find-file-full-title-insert :wk "insert full title")
-  "do" '(zetteldeft-find-file :wk "find file")
-  "dn" '(zetteldeft-new-file :wk "new file")
-  "dN" '(zetteldeft-new-file-and-link :wk "new file & link")
-  "dB" '(zetteldeft-new-file-and-backlink :wk "new file & backlink")
-  "db" '(zetteldeft-backlink-add :wk "add backlink")
-  "dr" '(zetteldeft-file-rename :wk "rename")
-  "dx" '(zetteldeft-count-words :wk "count words"))
+(map!
+  :leader
+  :prefix ("d" . "deft")
+  :desc "deft" "d" #'deft
+  :desc "new serch" "D" #'zetteldeft-deft-new-search
+  :desc "refresh" "R" #'deft-refresh
+  :desc "search at point" "s" #'zetteldeft-search-at-point
+  :desc "search current id" "c" #'zetteldeft-search-current-id
+  :desc "follow link" "f" #'zetteldeft-follow-link
+  :desc "avy file othe window" "F" #'zetteldeft-avy-file-search-ace-window
+  :desc "browse" "." #'zetteldeft-browse
+  :desc "go home" "h" #'zetteldeft-go-home
+  :desc "avy link search" "l" #'zetteldeft-avy-link-search
+  :desc "avy tag search" "t" #'zetteldeft-avy-tag-search
+  :desc "tag list" "T" #'zetteldeft-tag-buffer
+  :desc "insert tag" "#" #'zetteldeft-tag-insert
+  :desc "search tag" "/" #'zetteldeft-search-tag
+  :desc "insert id" "i" #'zetteldeft-find-file-id-insert
+  :desc "insert full title" "I" #'zetteldeft-find-file-full-title-insert
+  :desc "find file" "o" #'zetteldeft-find-file
+  :desc "new file" "n" #'zetteldeft-new-file
+  :desc "new file & link" "N" #'zetteldeft-new-file-and-link
+  :desc "new file & backlink" "B" #'zetteldeft-new-file-and-backlink
+  :desc "add link" "b" #'zetteldeft-backlink-add
+  :desc "rename" "r" #'zetteldeft-file-rename
+  :desc "count words" "x" #'zetteldeft-count-words)
 #+end_src
 
 * Languages
