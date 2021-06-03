@@ -692,6 +692,11 @@ Auto =css-mode= with =rstheme= file.
 (add-to-list 'auto-mode-alist
              '("\\.rstheme\\'" . css-mode))
 #+end_src
+
+#+begin_src emacs-lisp
+(add-to-list 'auto-mode-alist
+             '("\\.Rproj$" . yaml-mode))
+#+end_src
 * Org-mode
 ** Org Agenda
 Set agenda file and other variables.
