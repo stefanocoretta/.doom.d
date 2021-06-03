@@ -393,7 +393,7 @@ Map directories/files/functions.
 #+begin_src emacs-lisp
 (map!
  :leader
- :prefix "k"
+ :prefix ("k" . "kustom")
  :desc "Open file with external app" "e" #'open-in-external-app
  :desc "Open research in dired" "r" (lambda () (interactive) (find-file "~/repos/research"))
  :desc "Search in bibliography" "b" #'ivy-bibtex
