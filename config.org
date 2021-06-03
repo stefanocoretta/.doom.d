@@ -408,6 +408,14 @@ Bind =undo-fu=.
 (define-key evil-normal-state-map "\C-r" 'undo-fu-only-redo)
 #+end_src
 * Packages
+** Deft
+Set =deft= directory.
+
+#+begin_src emacs-lisp
+(setq deft-directory "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/deft"
+      deft-extensions '("org", "md", "txt", "tex")
+      deft-recursive t)
+#+end_src
 ** Dired
 Open file with external program. Bound to =SPC k e=.
 
