@@ -398,7 +398,7 @@ Map directories/files/functions.
  :desc "Open research in dired" "r" (lambda () (interactive) (find-file "~/repos/research"))
  :desc "Search in bibliography" "b" #'ivy-bibtex
  :desc "Open bibliograpy file" "B" (lambda () (interactive) (find-file "~/texmf/bibtex/bib/linguistics.bib"))
- :desc "Open repository status list" "s" #'magit-list-repositories)
+ :desc "Open repository status list" "s" #'magit-list-repositories )
 #+end_src
 
 Bind =undo-fu=.
@@ -737,26 +737,6 @@ Use =org-bullets=.
 ;; also need magit-section
 (package! magit-section)
 #+end_src
-
-#+begin_src emacs-lisp
-(use-package! org-bullets
-  :after org
-  :hook (org-mode . org-bullets-mode))
-#+end_src
-** Roam
-Set =roam= directory.
-
-#+begin_src emacs-lisp
-(setq org-roam-directory "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/roam" )
-#+end_src
-** Deft
-Set =deft= directory.
-
-#+begin_src emacs-lisp
-(setq deft-directory "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/deft"
-      deft-extensions '("org")
-      deft-recursive t)
-#+end_src
 ** Keymaps
 
 #+begin_src emacs-lisp
@@ -765,3 +745,4 @@ Set =deft= directory.
         :n "M-j" #'org-metadown
         :n "M-k" #'org-metaup ))
 #+end_src
+

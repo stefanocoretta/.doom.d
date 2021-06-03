@@ -83,10 +83,14 @@
  :desc "Open research in dired" "r" (lambda () (interactive) (find-file "~/repos/research"))
  :desc "Search in bibliography" "b" #'ivy-bibtex
  :desc "Open bibliograpy file" "B" (lambda () (interactive) (find-file "~/texmf/bibtex/bib/linguistics.bib"))
- :desc "Open repository status list" "s" #'magit-list-repositories)
+ :desc "Open repository status list" "s" #'magit-list-repositories )
 
 (define-key evil-normal-state-map "u" 'undo-fu-only-undo)
 (define-key evil-normal-state-map "\C-r" 'undo-fu-only-redo)
+
+(setq deft-directory "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/deft"
+      deft-extensions '("org", "md", "txt", "tex")
+      deft-recursive t)
 
 (setq all-the-icons-ivy-file-commands
       '(counsel-find-file counsel-file-jump counsel-recentf counsel-projectile-find-file counsel-projectile-find-dir projectile-find-file))
@@ -95,14 +99,14 @@
       '(("~/repos" . 2)))
 
 (setq magit-repolist-column-flag-alist
-             '((magit-untracked-files . "   ❕️    ")
-               (magit-unstaged-files . "   🟠    ")
-               (magit-staged-files . "   🟢    ")))
+             '((magit-untracked-files . "  ❕️  ")
+               (magit-unstaged-files . "  🟠  ")
+               (magit-staged-files . "  🟢  ")))
 
 (setq magit-repolist-columns
   '(("Name"     25 magit-repolist-column-ident nil)
     ("Version"  25 magit-repolist-column-version nil)
-    ("Status"   8 magit-repolist-column-flag nil)
+    (""   5 magit-repolist-column-flag nil)
     ("B<U"      3 magit-repolist-column-unpulled-from-upstream
       ((:right-align t)
        (:help-echo "Upstream changes not in branch")))
@@ -117,7 +121,44 @@
       '("~/repos" "~/repos/conlang" "~/repos/research" "~/repos/software" "~/repos/typography" "~/repos/web")
       projectile-auto-discover nil)
 
+(setq org-roam-directory "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/roam" )
+
 (setq ispell-dictionary "en")
+
+(use-package! zetteldeft
+  :after deft
+  :config
+    (zetteldeft-set-classic-keybindings))
+
+(general-define-key
+  :prefix "SPC"
+  :non-normal-prefix "C-SPC"
+  :states '(normal visual motion emacs)
+  :keymaps 'override
+  "d"  '(nil :wk "deft")
+  "dd" '(deft :wk "deft")
+  "dD" '(zetteldeft-deft-new-search :wk "new search")
+  "dR" '(deft-refresh :wk "refresh")
+  "ds" '(zetteldeft-search-at-point :wk "search at point")
+  "dc" '(zetteldeft-search-current-id :wk "search current id")
+  "df" '(zetteldeft-follow-link :wk "follow link")
+  "dF" '(zetteldeft-avy-file-search-ace-window :wk "avy file other window")
+  "d." '(zetteldeft-browse :wk "browse")
+  "dh" '(zetteldeft-go-home :wk "go home")
+  "dl" '(zetteldeft-avy-link-search :wk "avy link search")
+  "dt" '(zetteldeft-avy-tag-search :wk "avy tag search")
+  "dT" '(zetteldeft-tag-buffer :wk "tag list")
+  "d#" '(zetteldeft-tag-insert :wk "insert tag")
+  "d/" '(zetteldeft-search-tag :wk "search tag")
+  "di" '(zetteldeft-find-file-id-insert :wk "insert id")
+  "dI" '(zetteldeft-find-file-full-title-insert :wk "insert full title")
+  "do" '(zetteldeft-find-file :wk "find file")
+  "dn" '(zetteldeft-new-file :wk "new file")
+  "dN" '(zetteldeft-new-file-and-link :wk "new file & link")
+  "dB" '(zetteldeft-new-file-and-backlink :wk "new file & backlink")
+  "db" '(zetteldeft-backlink-add :wk "add backlink")
+  "dr" '(zetteldeft-file-rename :wk "rename")
+  "dx" '(zetteldeft-count-words :wk "count words"))
 
 (setq bibtex-autokey-name-year-separator ""
       bibtex-autokey-year-title-separator ""
@@ -171,16 +212,6 @@
                              (?B :foreground "#da8548")
                              (?C :foreground "#0098dd"))
         org-fancy-priorities-list '("⬢" "⬢" "⬢")))
-
-(use-package! org-bullets
-  :after org
-  :hook (org-mode . org-bullets-mode))
-
-(setq org-roam-directory "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/roam" )
-
-(setq deft-directory "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/deft"
-      deft-extensions '("org")
-      deft-recursive t)
 
 (after! org
   (map! :map org-mode-map

@@ -54,6 +54,8 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
+(package! zetteldeft)
+
 (package! ivy-bibtex)
 
 (package! org-ref)
