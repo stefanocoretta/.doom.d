@@ -508,12 +508,65 @@ Set projectile search path and disable automatic discover.
       '("~/repos" "~/repos/conlang" "~/repos/research" "~/repos/software" "~/repos/typography" "~/repos/web")
       projectile-auto-discover nil)
 #+end_src
+** Roam
+Set =roam= directory.
+
+#+begin_src emacs-lisp
+(setq org-roam-directory "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/roam" )
+#+end_src
 ** Spell-fu
 Set =ispell-dictionary=.
 
 #+begin_src emacs-lisp
 (setq ispell-dictionary "en")
 #+end_src
+** Zetteldeft
+Use =zetteldeft=.
+#+begin_src emacs-lisp :tangle packages.el
+(package! zetteldeft)
+#+end_src
+
+#+begin_src emacs-lisp
+(use-package! zetteldeft
+  :after deft
+  :config
+    (zetteldeft-set-classic-keybindings))
+#+end_src
+
+Define keymaps.
+
+#+begin_src emacs-lisp
+(general-define-key
+  :prefix "SPC"
+  :non-normal-prefix "C-SPC"
+  :states '(normal visual motion emacs)
+  :keymaps 'override
+  "d"  '(nil :wk "deft")
+  "dd" '(deft :wk "deft")
+  "dD" '(zetteldeft-deft-new-search :wk "new search")
+  "dR" '(deft-refresh :wk "refresh")
+  "ds" '(zetteldeft-search-at-point :wk "search at point")
+  "dc" '(zetteldeft-search-current-id :wk "search current id")
+  "df" '(zetteldeft-follow-link :wk "follow link")
+  "dF" '(zetteldeft-avy-file-search-ace-window :wk "avy file other window")
+  "d." '(zetteldeft-browse :wk "browse")
+  "dh" '(zetteldeft-go-home :wk "go home")
+  "dl" '(zetteldeft-avy-link-search :wk "avy link search")
+  "dt" '(zetteldeft-avy-tag-search :wk "avy tag search")
+  "dT" '(zetteldeft-tag-buffer :wk "tag list")
+  "d#" '(zetteldeft-tag-insert :wk "insert tag")
+  "d/" '(zetteldeft-search-tag :wk "search tag")
+  "di" '(zetteldeft-find-file-id-insert :wk "insert id")
+  "dI" '(zetteldeft-find-file-full-title-insert :wk "insert full title")
+  "do" '(zetteldeft-find-file :wk "find file")
+  "dn" '(zetteldeft-new-file :wk "new file")
+  "dN" '(zetteldeft-new-file-and-link :wk "new file & link")
+  "dB" '(zetteldeft-new-file-and-backlink :wk "new file & backlink")
+  "db" '(zetteldeft-backlink-add :wk "add backlink")
+  "dr" '(zetteldeft-file-rename :wk "rename")
+  "dx" '(zetteldeft-count-words :wk "count words"))
+#+end_src
+
 * Languages
 ** BibTeX
 Define auto-key generation.
