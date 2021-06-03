@@ -484,7 +484,7 @@ Customise repolist columns.
 (setq magit-repolist-columns
   '(("Name"     25 magit-repolist-column-ident nil)
     ("Version"  25 magit-repolist-column-version nil)
-    ("Status"   8 magit-repolist-column-flag nil)
+    (""   5 magit-repolist-column-flag nil)
     ("B<U"      3 magit-repolist-column-unpulled-from-upstream
       ((:right-align t)
        (:help-echo "Upstream changes not in branch")))
