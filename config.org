@@ -473,9 +473,9 @@ Customise repolist flags.
 
 #+begin_src emacs-lisp
 (setq magit-repolist-column-flag-alist
-             '((magit-untracked-files . "   ❕️    ")
-               (magit-unstaged-files . "   🟠    ")
-               (magit-staged-files . "   🟢    ")))
+             '((magit-untracked-files . "  ❕️  ")
+               (magit-unstaged-files . "  🟠  ")
+               (magit-staged-files . "  🟢  ")))
 #+end_src
 
 Customise repolist columns.
