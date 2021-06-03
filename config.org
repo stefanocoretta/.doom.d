@@ -708,11 +708,11 @@ Set agenda file and other variables.
   (setq org-agenda-start-day nil)
   (setq calendar-week-start-day 1))
 #+end_src
-
-Start week on Monday.
+** Numbered sections
 
 #+begin_src emacs-lisp
-
+(after! org
+  (setq org-startup-numerated t))
 #+end_src
 
 ** Priorities
