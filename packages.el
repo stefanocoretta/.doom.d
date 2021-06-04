@@ -54,6 +54,15 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
+(package! org-roam-bibtex
+  :recipe (:host github :repo "org-roam/org-roam-bibtex"))
+
+;; When using org-roam via the `+roam` flag
+(unpin! org-roam)
+
+;; When using bibtex-completion via the `biblio` module
+(unpin! bibtex-completion helm-bibtex ivy-bibtex)
+
 (package! zetteldeft)
 
 (package! ivy-bibtex)
@@ -64,8 +73,8 @@
 
 (package! pandoc-mode)
 
-(package! org-fancy-priorities)
-
 (package! org-bullets)
 ;; also need magit-section
 (package! magit-section)
+
+(package! org-fancy-priorities)

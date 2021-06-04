@@ -76,14 +76,20 @@
 
 (setq display-line-numbers-type t)
 
+(after! org
+  (remove-hook 'after-save-hook #'+literate-recompile-maybe-h))
+
 (map!
  :leader
- :prefix ("k" . "kustom")
- :desc "Open file with external app" "e" #'open-in-external-app
+ :prefix ("j" . "go-to")
  :desc "Open research in dired" "r" (lambda () (interactive) (find-file "~/repos/research"))
- :desc "Search in bibliography" "b" #'ivy-bibtex
- :desc "Open bibliograpy file" "B" (lambda () (interactive) (find-file "~/texmf/bibtex/bib/linguistics.bib"))
- :desc "Open repository status list" "s" #'magit-list-repositories )
+ :desc "Open bibliograpy file" "b" (lambda () (interactive) (find-file "~/texmf/bibtex/bib/linguistics.bib")))
+
+(map!
+ :leader
+ :desc "Open agenda view" "a" #'org-agenda-list
+ :desc "Open file with external app" "e" #'open-in-external-app
+ :desc "Search in bibliography" "k" #'ivy-bibtex )
 
 (define-key evil-normal-state-map "u" 'undo-fu-only-undo)
 (define-key evil-normal-state-map "\C-r" 'undo-fu-only-redo)
@@ -122,6 +128,15 @@
       projectile-auto-discover nil)
 
 (setq org-roam-directory "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/roam" )
+
+(setq org-roam-capture-templates
+      '(("d" "default" plain #'org-roam-capture--get-point "%?" :file-name "${slug}" :head "#+title: ${title}\n#+date: %t\n" :unnarrowed t)))
+
+(use-package! org-roam-bibtex
+  :after org-roam
+  :hook (org-roam-mode . org-roam-bibtex-mode)
+  :config
+  (require 'org-ref)) ; optional: if Org Ref is not loaded anywhere else, load it here
 
 (setq ispell-dictionary "en")
 
@@ -199,13 +214,14 @@
              '("\\.Rproj$" . yaml-mode))
 
 (after! org
+  (setq org-startup-numerated t)
+  (setq org-startup-folded t))
+
+(after! org
   (setq org-agenda-files '("/Users/ste/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/agenda.org"))
   (setq org-agenda-span 14)
   (setq org-agenda-start-day nil)
   (setq calendar-week-start-day 1))
-
-(after! org
-  (setq org-startup-numerated t))
 
 (add-hook 'org-agenda-mode-hook 'org-fancy-priorities-mode)
 

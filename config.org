@@ -2,7 +2,6 @@
 # Tangle by default to config.el.
 #+property: header-args:emacs-lisp :tangle config.el
 #+property: header-args :mkdirp yes :comments no
-#+startup: fold
 :END:
 
 #+title: Doom Emacs configuration
@@ -387,18 +386,30 @@ Always show line numbers in the gutter.
 #+begin_src emacs-lisp
 (setq display-line-numbers-type t)
 #+end_src
+** Literate
+#+begin_src emacs-lisp
+(after! org
+  (remove-hook 'after-save-hook #'+literate-recompile-maybe-h))
+#+end_src
 ** Custom keymaps
-Map directories/files/functions.
+Create a =go-to= keymap.
 
 #+begin_src emacs-lisp
 (map!
  :leader
- :prefix ("k" . "kustom")
- :desc "Open file with external app" "e" #'open-in-external-app
+ :prefix ("j" . "go-to")
  :desc "Open research in dired" "r" (lambda () (interactive) (find-file "~/repos/research"))
- :desc "Search in bibliography" "b" #'ivy-bibtex
- :desc "Open bibliograpy file" "B" (lambda () (interactive) (find-file "~/texmf/bibtex/bib/linguistics.bib"))
- :desc "Open repository status list" "s" #'magit-list-repositories )
+ :desc "Open bibliograpy file" "b" (lambda () (interactive) (find-file "~/texmf/bibtex/bib/linguistics.bib")))
+#+end_src
+
+Map functions.
+
+#+begin_src emacs-lisp
+(map!
+ :leader
+ :desc "Open agenda view" "a" #'org-agenda-list
+ :desc "Open file with external app" "e" #'open-in-external-app
+ :desc "Search in bibliography" "k" #'ivy-bibtex )
 #+end_src
 
 Bind =undo-fu=.
@@ -453,7 +464,6 @@ Version 2019-11-04 2021-02-16"
          (lambda ($fpath) (let ((process-connection-type nil))
                             (start-process "" nil "xdg-open" $fpath))) $file-list))))))
 #+end_src
-
 ** Ivy
 Add =all-the-icons= in =projectile-find-file=.
 
@@ -499,7 +509,6 @@ Set author secrets for =forge=.
 #+begin_src emacs-lisp
 (setq auth-sources '("~/.authinfo"))
 #+end_src
-
 ** Projectile
 Set projectile search path and disable automatic discover.
 
@@ -513,6 +522,34 @@ Set =roam= directory.
 
 #+begin_src emacs-lisp
 (setq org-roam-directory "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/roam" )
+#+end_src
+
+Define custom template.
+
+#+begin_src emacs-lisp
+(setq org-roam-capture-templates
+      '(("d" "default" plain #'org-roam-capture--get-point "%?" :file-name "${slug}" :head "#+title: ${title}\n#+date: %t\n" :unnarrowed t)))
+#+end_src
+
+Use =org-roam-bibtex=.
+
+#+begin_src emacs-lisp :tangle packages.el
+(package! org-roam-bibtex
+  :recipe (:host github :repo "org-roam/org-roam-bibtex"))
+
+;; When using org-roam via the `+roam` flag
+(unpin! org-roam)
+
+;; When using bibtex-completion via the `biblio` module
+(unpin! bibtex-completion helm-bibtex ivy-bibtex)
+#+end_src
+
+#+begin_src emacs-lisp
+(use-package! org-roam-bibtex
+  :after org-roam
+  :hook (org-roam-mode . org-roam-bibtex-mode)
+  :config
+  (require 'org-ref)) ; optional: if Org Ref is not loaded anywhere else, load it here
 #+end_src
 ** Spell-fu
 Set =ispell-dictionary=.
@@ -563,7 +600,6 @@ Define keymaps.
   :desc "rename" "r" #'zetteldeft-file-rename
   :desc "count words" "x" #'zetteldeft-count-words)
 #+end_src
-
 * Languages
 ** BibTeX
 Define auto-key generation.
@@ -594,7 +630,6 @@ Use =org-ref=.
 #+begin_src emacs-lisp :tangle packages.el
 (package! org-ref)
 #+end_src
-
 ** CSV
 Use =csv-mode=.
 
@@ -698,6 +733,22 @@ Auto =css-mode= with =rstheme= file.
              '("\\.Rproj$" . yaml-mode))
 #+end_src
 * Org-mode
+** Customise
+Number sections and start folded.
+
+#+begin_src emacs-lisp
+(after! org
+  (setq org-startup-numerated t)
+  (setq org-startup-folded t))
+#+end_src
+
+Use =org-bullets=.
+
+#+begin_src emacs-lisp :tangle packages.el
+(package! org-bullets)
+;; also need magit-section
+(package! magit-section)
+#+end_src
 ** Org Agenda
 Set agenda file and other variables.
 
@@ -708,13 +759,6 @@ Set agenda file and other variables.
   (setq org-agenda-start-day nil)
   (setq calendar-week-start-day 1))
 #+end_src
-** Numbered sections
-
-#+begin_src emacs-lisp
-(after! org
-  (setq org-startup-numerated t))
-#+end_src
-
 ** Priorities
 Use =org-fancy-priorities= to customise priority cookies.
 
@@ -731,16 +775,8 @@ Use =org-fancy-priorities= to customise priority cookies.
                              (?C :foreground "#0098dd"))
         org-fancy-priorities-list '("⬢" "⬢" "⬢")))
 #+end_src
-** Bullets
-
-Use =org-bullets=.
-
-#+begin_src emacs-lisp :tangle packages.el
-(package! org-bullets)
-;; also need magit-section
-(package! magit-section)
-#+end_src
 ** Keymaps
+Extra keymaps.
 
 #+begin_src emacs-lisp
 (after! org
