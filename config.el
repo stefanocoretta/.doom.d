@@ -178,8 +178,16 @@
       bibtex-autokey-titleword-length 0
       bibtex-autokey-titlewords 0)
 
-(setq bibtex-completion-bibliography '("~/texmf/bibtex/bib/linguistics.bib")
-      bibtex-completion-library-path '("/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/biblio"))
+(setq bibtex-completion-bibliography '("/Users/ste/texmf/bibtex/bib/linguistics.bib")
+      bibtex-completion-library-path '("/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/biblio")
+      bibtex-completion-notes-path "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/roam")
+
+(setq reftex-default-bibliography '("/Users/ste/texmf/bibtex/bib/linguistics.bib"))
+
+;; see org-ref for use of these variables
+(setq org-ref-bibliography-notes "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/roam"
+      org-ref-default-bibliography '("/Users/ste/texmf/bibtex/bib/linguistics.bib")
+      org-ref-pdf-directory "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/biblio")
 
 (load! "lexurgy-mode.el")
 

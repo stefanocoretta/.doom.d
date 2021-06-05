@@ -621,14 +621,26 @@ Use =ivy-bibtex=.
 Set main bib and PDFs location.
 
 #+begin_src emacs-lisp
-(setq bibtex-completion-bibliography '("~/texmf/bibtex/bib/linguistics.bib")
-      bibtex-completion-library-path '("/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/biblio"))
+(setq bibtex-completion-bibliography '("/Users/ste/texmf/bibtex/bib/linguistics.bib")
+      bibtex-completion-library-path '("/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/biblio")
+      bibtex-completion-notes-path "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/roam")
 #+end_src
 
 Use =org-ref=.
 
 #+begin_src emacs-lisp :tangle packages.el
 (package! org-ref)
+#+end_src
+
+Set =org-ref= variables.
+
+#+begin_src emacs-lisp
+(setq reftex-default-bibliography '("/Users/ste/texmf/bibtex/bib/linguistics.bib"))
+
+;; see org-ref for use of these variables
+(setq org-ref-bibliography-notes "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/roam"
+      org-ref-default-bibliography '("/Users/ste/texmf/bibtex/bib/linguistics.bib")
+      org-ref-pdf-directory "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/biblio")
 #+end_src
 ** CSV
 Use =csv-mode=.
