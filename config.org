@@ -374,7 +374,9 @@ Set tab width to 2 spaces.
 (setq-default tab-width 2)
 #+end_src
 ** Framing
-Open emacs in full-size (macOS Zoom).
+Open emacs in maximized window (macOS maximize/zoom).
+[[https://support.apple.com/en-gb/guide/mac-help/mchlp2469/mac][macOS maximize/zoom]] sets the width and height of the app window equal to those of the desktop, without going full screen (i.e. without creating a new space).
+The menu bar is also still visible when windows are maximised.
 
 #+begin_src emacs-lisp
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
@@ -392,6 +394,8 @@ Always show line numbers in the gutter.
 (setq display-line-numbers-type t)
 #+end_src
 ** Literate
+Do not compile when saving.
+
 #+begin_src emacs-lisp
 (after! org
   (remove-hook 'after-save-hook #'+literate-recompile-maybe-h))
