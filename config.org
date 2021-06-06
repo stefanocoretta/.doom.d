@@ -2,6 +2,7 @@
 # Tangle by default to config.el.
 #+property: header-args:emacs-lisp :tangle config.el
 #+property: header-args :mkdirp yes :comments no
+#+startup: content nonum
 :END:
 
 #+title: Doom Emacs configuration
