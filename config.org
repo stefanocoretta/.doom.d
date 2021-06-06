@@ -348,17 +348,27 @@ This code is written to the =init.el= to select which modules to load.
 ;; clients, file templates and snippets.
 (setq user-full-name "Stefano Coretta")
 #+end_src
-** Typography
+** Theme and typography
+Use and customise the [[https://draculatheme.com][Dracula]] theme.
+
+#+begin_src emacs-lisp
+(setq doom-theme 'doom-dracula
+      doom-dracula-brighter-modeline t)
+
+;; make background black for better readability
+(custom-set-faces!
+  '(default :background "black"))
+#+end_src
+
 Set typefaces.
 
 #+begin_src emacs-lisp
 (setq doom-font (font-spec :family "Hasklug Nerd Font Mono" :size 14)
       doom-big-font (font-spec :family "Hasklug Nerd Font Mono" :size 24)
-      doom-variable-pitch-font (font-spec :family "Lato" :size 14)
-)
+      doom-variable-pitch-font (font-spec :family "Lato" :size 14))
 #+end_src
 
-Set tab width.
+Set tab width to 2 spaces.
 
 #+begin_src emacs-lisp
 (setq-default tab-width 2)
