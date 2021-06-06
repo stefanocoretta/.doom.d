@@ -386,12 +386,6 @@ Disable exit confirmation.
 (setq confirm-kill-emacs nil)
 #+end_src
 
-Use the [[https://draculatheme.com][Dracula]] theme.
-
-#+begin_src emacs-lisp
-(setq doom-theme 'doom-dracula)
-#+end_src
-
 Always show line numbers in the gutter.
 
 #+begin_src emacs-lisp
@@ -428,6 +422,15 @@ Bind =undo-fu=.
 #+begin_src emacs-lisp
 (define-key evil-normal-state-map "u" 'undo-fu-only-undo)
 (define-key evil-normal-state-map "\C-r" 'undo-fu-only-redo)
+#+end_src
+
+Org-mode map.
+
+#+begin_src emacs-lisp
+(after! org
+  (map! :map org-mode-map
+        :n "M-j" #'org-metadown
+        :n "M-k" #'org-metaup ))
 #+end_src
 * Packages
 ** Deft
@@ -474,13 +477,6 @@ Version 2019-11-04 2021-02-16"
         (mapc
          (lambda ($fpath) (let ((process-connection-type nil))
                             (start-process "" nil "xdg-open" $fpath))) $file-list))))))
-#+end_src
-** Ivy
-Add =all-the-icons= in =projectile-find-file=.
-
-#+begin_src emacs-lisp
-(setq all-the-icons-ivy-file-commands
-      '(counsel-find-file counsel-file-jump counsel-recentf counsel-projectile-find-file counsel-projectile-find-dir projectile-find-file))
 #+end_src
 ** Magit
 Set magit repo directories and depth.
@@ -798,13 +794,3 @@ Use =org-fancy-priorities= to customise priority cookies.
                              (?C :foreground "#0098dd"))
         org-fancy-priorities-list '("⬢" "⬢" "⬢")))
 #+end_src
-** Keymaps
-Extra keymaps.
-
-#+begin_src emacs-lisp
-(after! org
-  (map! :map org-mode-map
-        :n "M-j" #'org-metadown
-        :n "M-k" #'org-metaup ))
-#+end_src
-
