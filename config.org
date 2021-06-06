@@ -400,6 +400,12 @@ Do not compile when saving.
 (after! org
   (remove-hook 'after-save-hook #'+literate-recompile-maybe-h))
 #+end_src
+** Workspaces
+Always create a new workspace when switching project.
+
+#+begin_src emacs-lisp
+(setq +workspaces-on-switch-project-behavior t)
+#+end_src
 ** Custom keymaps
 Create a =go-to= keymap.
 
