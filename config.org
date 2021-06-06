@@ -412,19 +412,19 @@ Create a =go-to= keymap.
 #+begin_src emacs-lisp
 (map!
  :leader
- :prefix ("j" . "go-to")
+ :prefix ("G" . "go-to")
  :desc "Open research in dired" "r" (lambda () (interactive) (find-file "~/repos/research"))
  :desc "Open bibliograpy file" "b" (lambda () (interactive) (find-file "~/texmf/bibtex/bib/linguistics.bib")))
 #+end_src
 
-Map functions.
+Map custom functions.
 
 #+begin_src emacs-lisp
 (map!
  :leader
  :desc "Open agenda view" "a" #'org-agenda-list
  :desc "Open file with external app" "e" #'open-in-external-app
- :desc "Search in bibliography" "k" #'ivy-bibtex )
+ :desc "Search in bibliography" "B" #'ivy-bibtex )
 #+end_src
 
 Bind =undo-fu=.

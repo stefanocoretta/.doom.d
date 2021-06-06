@@ -61,10 +61,16 @@
 ;; clients, file templates and snippets.
 (setq user-full-name "Stefano Coretta")
 
+(setq doom-theme 'doom-dracula
+      doom-dracula-brighter-modeline t)
+
+;; make background black for better readability
+(custom-set-faces!
+  '(default :background "black"))
+
 (setq doom-font (font-spec :family "Hasklug Nerd Font Mono" :size 14)
       doom-big-font (font-spec :family "Hasklug Nerd Font Mono" :size 24)
-      doom-variable-pitch-font (font-spec :family "Lato" :size 14)
-)
+      doom-variable-pitch-font (font-spec :family "Lato" :size 14))
 
 (setq-default tab-width 2)
 
@@ -72,16 +78,16 @@
 
 (setq confirm-kill-emacs nil)
 
-(setq doom-theme 'doom-dracula)
-
 (setq display-line-numbers-type t)
 
 (after! org
   (remove-hook 'after-save-hook #'+literate-recompile-maybe-h))
 
+(setq +workspaces-on-switch-project-behavior t)
+
 (map!
  :leader
- :prefix ("j" . "go-to")
+ :prefix ("G" . "go-to")
  :desc "Open research in dired" "r" (lambda () (interactive) (find-file "~/repos/research"))
  :desc "Open bibliograpy file" "b" (lambda () (interactive) (find-file "~/texmf/bibtex/bib/linguistics.bib")))
 
@@ -89,17 +95,19 @@
  :leader
  :desc "Open agenda view" "a" #'org-agenda-list
  :desc "Open file with external app" "e" #'open-in-external-app
- :desc "Search in bibliography" "k" #'ivy-bibtex )
+ :desc "Search in bibliography" "B" #'ivy-bibtex )
 
 (define-key evil-normal-state-map "u" 'undo-fu-only-undo)
 (define-key evil-normal-state-map "\C-r" 'undo-fu-only-redo)
 
+(after! org
+  (map! :map org-mode-map
+        :n "M-j" #'org-metadown
+        :n "M-k" #'org-metaup ))
+
 (setq deft-directory "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/deft"
       deft-extensions '("org", "md", "txt", "tex")
       deft-recursive t)
-
-(setq all-the-icons-ivy-file-commands
-      '(counsel-find-file counsel-file-jump counsel-recentf counsel-projectile-find-file counsel-projectile-find-dir projectile-find-file))
 
 (setq magit-repository-directories
       '(("~/repos" . 2)))
@@ -238,8 +246,3 @@
                              (?B :foreground "#da8548")
                              (?C :foreground "#0098dd"))
         org-fancy-priorities-list '("⬢" "⬢" "⬢")))
-
-(after! org
-  (map! :map org-mode-map
-        :n "M-j" #'org-metadown
-        :n "M-k" #'org-metaup ))
