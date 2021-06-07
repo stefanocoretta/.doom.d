@@ -628,6 +628,20 @@ Define auto-key generation.
       bibtex-autokey-titlewords 0)
 #+end_src
 
+Set variables.
+
+#+begin_src emacs-lisp
+(setq bibtex-align-at-equal-sign t
+      bibtex-comma-after-last-field t
+      bibtex-entry-format '(opt-or-altr required-fields numerical-fields realign last-comma sort-fields) )
+#+end_src
+
+Keep entry sorted.
+
+#+begin_src emacs-lisp
+(setq-default bibtex-maintain-sorted-entries t)
+#+end_src
+
 Use =ivy-bibtex=.
 
 #+begin_src emacs-lisp :tangle packages.el

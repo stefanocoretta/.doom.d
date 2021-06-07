@@ -186,6 +186,12 @@
       bibtex-autokey-titleword-length 0
       bibtex-autokey-titlewords 0)
 
+(setq bibtex-align-at-equal-sign t
+      bibtex-comma-after-last-field t
+      bibtex-entry-format '(opt-or-altr required-fields numerical-fields realign last-comma sort-fields) )
+
+(setq-default bibtex-maintain-sorted-entries t)
+
 (setq bibtex-completion-bibliography '("/Users/ste/texmf/bibtex/bib/linguistics.bib")
       bibtex-completion-library-path '("/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/biblio")
       bibtex-completion-notes-path "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/roam")
