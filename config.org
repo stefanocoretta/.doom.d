@@ -487,6 +487,15 @@ Version 2019-11-04 2021-02-16"
          (lambda ($fpath) (let ((process-connection-type nil))
                             (start-process "" nil "xdg-open" $fpath))) $file-list))))))
 #+end_src
+** Forge
+Set variables for =forge=.
+
+#+begin_src emacs-lisp
+(setq auth-sources '("~/.authinfo")
+      forge-owned-accounts '(("stefanocoretta" . nil)
+                             ("learnB4SS" . nil)
+                             ("many-speech-analyses" . nil)))
+#+end_src
 ** Magit
 Set magit repo directories and depth.
 
@@ -518,12 +527,6 @@ Customise repolist columns.
       ((:right-align t)
        (:help-echo "Local changes not in upstream")))
     ("Path"     99 magit-repolist-column-path nil)))
-#+end_src
-
-Set author secrets for =forge=.
-
-#+begin_src emacs-lisp
-(setq auth-sources '("~/.authinfo"))
 #+end_src
 ** Projectile
 Set projectile search path and disable automatic discover.
@@ -796,7 +799,8 @@ Set agenda file and other variables.
 
 #+begin_src emacs-lisp
 (after! org
-  (setq org-agenda-files '("/Users/ste/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/agenda.org"))
+  (setq org-agenda-files '("/Users/ste/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/agenda.org"
+                           "/Users/ste/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/gh.org"))
   (setq org-agenda-span 14)
   (setq org-agenda-start-day nil)
   (setq calendar-week-start-day 1))

@@ -109,6 +109,11 @@
       deft-extensions '("org", "md", "txt", "tex")
       deft-recursive t)
 
+(setq auth-sources '("~/.authinfo")
+      forge-owned-accounts '(("stefanocoretta" . nil)
+                             ("learnB4SS" . nil)
+                             ("many-speech-analyses" . nil)))
+
 (setq magit-repository-directories
       '(("~/repos" . 2)))
 
@@ -128,8 +133,6 @@
       ((:right-align t)
        (:help-echo "Local changes not in upstream")))
     ("Path"     99 magit-repolist-column-path nil)))
-
-(setq auth-sources '("~/.authinfo"))
 
 (setq projectile-project-search-path
       '("~/repos" "~/repos/conlang" "~/repos/research" "~/repos/software" "~/repos/typography" "~/repos/web")
@@ -240,7 +243,8 @@
   (setq org-startup-folded t))
 
 (after! org
-  (setq org-agenda-files '("/Users/ste/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/agenda.org"))
+  (setq org-agenda-files '("/Users/ste/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/agenda.org"
+                           "/Users/ste/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/gh.org"))
   (setq org-agenda-span 14)
   (setq org-agenda-start-day nil)
   (setq calendar-week-start-day 1))
