@@ -789,16 +789,20 @@ Use =org-bullets=.
 ;; also need magit-section
 (package! magit-section)
 #+end_src
+
+#+begin_src emacs-lisp
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+#+end_src
 ** Org Agenda
 Set agenda file and other variables.
 
 #+begin_src emacs-lisp
 (after! org
-  (setq org-agenda-files '("/Users/ste/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/agenda.org"
-                           "/Users/ste/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/gh.org"))
+  (setq org-agenda-files '("/Users/ste/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/agenda.org"))
   (setq org-agenda-span 14)
   (setq org-agenda-start-day nil)
-  (setq calendar-week-start-day 1))
+  (setq calendar-week-start-day 1)
+  (setq org-directory "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/roam"))
 #+end_src
 ** Priorities
 Use =org-fancy-priorities= to customise priority cookies.

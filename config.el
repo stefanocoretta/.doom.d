@@ -87,15 +87,13 @@
 
 (map!
  :leader
- :prefix ("G" . "go-to")
- :desc "Open research in dired" "r" (lambda () (interactive) (find-file "~/repos/research"))
- :desc "Open bibliograpy file" "b" (lambda () (interactive) (find-file "~/texmf/bibtex/bib/linguistics.bib")))
-
-(map!
- :leader
+ :prefix ("a" . "custom")
  :desc "Open agenda view" "a" #'org-agenda-list
+ :desc "Search in bibliography" "b" #'ivy-bibtex
+ :desc "Open bibliograpy file" "A" (lambda () (interactive) (find-file "/Users/ste/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/agenda.org"))
+ :desc "Open bibliograpy file" "B" (lambda () (interactive) (find-file "~/texmf/bibtex/bib/linguistics.bib"))
  :desc "Open file with external app" "e" #'open-in-external-app
- :desc "Search in bibliography" "B" #'ivy-bibtex )
+ :desc "List GitHub issues" "f" #'forge-list-owned-issues)
 
 (define-key evil-normal-state-map "u" 'undo-fu-only-undo)
 (define-key evil-normal-state-map "\C-r" 'undo-fu-only-redo)
@@ -150,6 +148,7 @@
   (require 'org-ref)) ; optional: if Org Ref is not loaded anywhere else, load it here
 
 (setq ispell-dictionary "en")
+(remove-hook 'text-mode-hook #'spell-fu-mode)
 
 (use-package! zetteldeft
   :after deft
@@ -242,12 +241,14 @@
   (setq org-startup-numerated t)
   (setq org-startup-folded t))
 
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
 (after! org
-  (setq org-agenda-files '("/Users/ste/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/agenda.org"
-                           "/Users/ste/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/gh.org"))
+  (setq org-agenda-files '("/Users/ste/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/agenda.org"))
   (setq org-agenda-span 14)
   (setq org-agenda-start-day nil)
-  (setq calendar-week-start-day 1))
+  (setq calendar-week-start-day 1)
+  (setq org-directory "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/roam"))
 
 (add-hook 'org-agenda-mode-hook 'org-fancy-priorities-mode)
 
