@@ -406,24 +406,18 @@ Always create a new workspace when switching project.
 (setq +workspaces-on-switch-project-behavior t)
 #+end_src
 ** Custom keymaps
-Create a =go-to= keymap.
+Map custom.
 
 #+begin_src emacs-lisp
 (map!
  :leader
- :prefix ("G" . "go-to")
- :desc "Open research in dired" "r" (lambda () (interactive) (find-file "~/repos/research"))
- :desc "Open bibliograpy file" "b" (lambda () (interactive) (find-file "~/texmf/bibtex/bib/linguistics.bib")))
-#+end_src
-
-Map custom functions.
-
-#+begin_src emacs-lisp
-(map!
- :leader
+ :prefix ("a" . "custom")
  :desc "Open agenda view" "a" #'org-agenda-list
+ :desc "Search in bibliography" "b" #'ivy-bibtex
+ :desc "Open bibliograpy file" "A" (lambda () (interactive) (find-file "/Users/ste/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/agenda.org"))
+ :desc "Open bibliograpy file" "B" (lambda () (interactive) (find-file "~/texmf/bibtex/bib/linguistics.bib"))
  :desc "Open file with external app" "e" #'open-in-external-app
- :desc "Search in bibliography" "B" #'ivy-bibtex )
+ :desc "List GitHub issues" "f" #'forge-list-owned-issues)
 #+end_src
 
 Bind =undo-fu=.
