@@ -565,10 +565,11 @@ Use =org-roam-bibtex=.
   (require 'org-ref)) ; optional: if Org Ref is not loaded anywhere else, load it here
 #+end_src
 ** Spell-fu
-Set =ispell-dictionary=.
+Set =ispell-dictionary= and disable global activation.
 
 #+begin_src emacs-lisp
 (setq ispell-dictionary "en")
+(remove-hook 'text-mode-hook #'spell-fu-mode)
 #+end_src
 ** Zetteldeft
 Use =zetteldeft=.
