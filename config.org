@@ -594,7 +594,7 @@ Set projectile search path and disable automatic discover.
 
 #+begin_src emacs-lisp
 (setq projectile-project-search-path
-      '("~/repos" "~/repos/conlang" "~/repos/research" "~/repos/software" "~/repos/typography" "~/repos/web")
+      '("~/repos" "~/repos/conlang" "~/repos/research" "~/repos/software" "~/repos/typography" "~/repos/web" "~/repos/b4ss" "~/repos/many-speech" "~/repos/teaching")
       projectile-auto-discover nil)
 #+end_src
 ** Roam
