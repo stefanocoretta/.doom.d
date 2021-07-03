@@ -311,9 +311,24 @@ _SPC_ cancel _o_nly this      _d_elete
 (after! org
   (setq org-agenda-files '("/Users/ste/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/agenda.org"))
   (setq org-agenda-span 14)
-  (setq org-agenda-start-day nil)
-  (setq calendar-week-start-day 1)
+  (setq org-agenda-start-on-weekday 1)
   (setq org-directory "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/roam"))
+
+(add-hook 'org-agenda-finalize-hook
+  (lambda ()
+    (save-excursion
+      (color-org-header "Research:" "SeaGreen" "white")
+      (color-org-header "Workshops:" "DarkOrange" "black")
+      (color-org-header "Seminars:" "MediumPurple" "white")
+      (color-org-header "Personal:" "red4" "white"))))
+
+(defun color-org-header (tag backcolor forecolor)
+  ""
+  (interactive)
+  (goto-char (point-min))
+  (while (re-search-forward tag nil t)
+    (add-text-properties (match-beginning 0) (+ (match-beginning 0) 10)
+                     `(face (:background, backcolor, :foreground, forecolor)))))
 
 (add-hook 'org-agenda-mode-hook 'org-fancy-priorities-mode)
 
