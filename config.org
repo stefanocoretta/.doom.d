@@ -876,7 +876,7 @@ Number sections and start folded.
 
 #+begin_src emacs-lisp
 (after! org
-  (setq org-startup-numerated t)
+  (setq org-startup-numerated nil)
   (setq org-startup-folded t))
 #+end_src
 
