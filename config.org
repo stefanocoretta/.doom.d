@@ -437,7 +437,7 @@ Org-mode map.
 #+end_src
 ** Hydras
 #+begin_src emacs-lisp
- (defhydra hydra-window ()
+(defhydra hydra-window ()
    "
 Movement^^        ^Split^         ^Switch^      ^Resize^
 ----------------------------------------------------------------
@@ -501,6 +501,37 @@ _SPC_ cancel _o_nly this      _d_elete
 (map!
  :leader
  :desc "Windows" "e" #'hydra-window/body )
+#+end_src
+
+#+begin_src emacs-lisp
+(defhydra hydra-smerge ()
+   "
+Movement^^^^               Merge Action^^           Other
+---------------------^^^^  -------------------^^    -----------
+_n_/_p_  next/prev hunk    _l_ keep lower            _u_ undo
+_j_/_k_  move up/down      _u_ keep upper            _r_ resolve
+^^^^                       _a_ keep all              _R_ refine
+^^^^                       _c_ keep current          _SPC_ quit
+^^^^                       _C_ combine with next
+"
+  ("n" smerge-next)
+  ("p" smerge-prev)
+  ("j" evil-next-line)
+  ("k" evil-previous-line)
+  ("a" smerge-keep-all)
+  ("l" smerge-keep-lower)
+  ("u" smerge-keep-upper)
+  ("c" smerge-keep-current)
+  ("C" smerge-combine-with-next)
+  ("r" smerge-resolve)
+  ("R" smerge-refine)
+  ("u" undo-tree-undo)
+  ("SPC" nil)
+  )
+
+(map!
+ :leader
+ :desc "Smerge" "r" #'hydra-smerge/body )
 #+end_src
 * Packages
 ** Deft
