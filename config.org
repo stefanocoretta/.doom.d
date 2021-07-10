@@ -906,9 +906,9 @@ Set agenda file and other variables.
 (add-hook 'org-agenda-finalize-hook
   (lambda ()
     (save-excursion
-      (color-org-header "Research:" "SeaGreen" "white")
-      (color-org-header "Workshops:" "DarkOrange" "black")
-      (color-org-header "Seminars:" "MediumPurple" "white")
+      (color-org-header "Meetings:" "SeaGreen" "white")
+      (color-org-header "Attend:" "DarkOrange" "black")
+      (color-org-header "Engage:" "MediumPurple" "white")
       (color-org-header "Personal:" "red4" "white"))))
 
 (defun color-org-header (tag backcolor forecolor)

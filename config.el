@@ -168,6 +168,35 @@ _SPC_ cancel _o_nly this      _d_elete
  :leader
  :desc "Windows" "e" #'hydra-window/body )
 
+(defhydra hydra-smerge ()
+   "
+Movement^^^^               Merge Action^^           Other
+---------------------^^^^  -------------------^^    -----------
+_n_/_p_  next/prev hunk    _l_ keep lower            _u_ undo
+_j_/_k_  move up/down      _u_ keep upper            _r_ resolve
+^^^^                       _a_ keep all              _R_ refine
+^^^^                       _c_ keep current          _SPC_ quit
+^^^^                       _C_ combine with next
+"
+  ("n" smerge-next)
+  ("p" smerge-prev)
+  ("j" evil-next-line)
+  ("k" evil-previous-line)
+  ("a" smerge-keep-all)
+  ("l" smerge-keep-lower)
+  ("u" smerge-keep-upper)
+  ("c" smerge-keep-current)
+  ("C" smerge-combine-with-next)
+  ("r" smerge-resolve)
+  ("R" smerge-refine)
+  ("u" undo-tree-undo)
+  ("SPC" nil)
+  )
+
+(map!
+ :leader
+ :desc "Smerge" "r" #'hydra-smerge/body )
+
 (setq deft-directory "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/deft"
       deft-extensions '("org", "md", "txt", "tex")
       deft-recursive t)
@@ -303,7 +332,7 @@ _SPC_ cancel _o_nly this      _d_elete
              '("\\.Rproj$" . yaml-mode))
 
 (after! org
-  (setq org-startup-numerated t)
+  (setq org-startup-numerated nil)
   (setq org-startup-folded t))
 
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
@@ -317,9 +346,9 @@ _SPC_ cancel _o_nly this      _d_elete
 (add-hook 'org-agenda-finalize-hook
   (lambda ()
     (save-excursion
-      (color-org-header "Research:" "SeaGreen" "white")
-      (color-org-header "Workshops:" "DarkOrange" "black")
-      (color-org-header "Seminars:" "MediumPurple" "white")
+      (color-org-header "Meetings:" "SeaGreen" "white")
+      (color-org-header "Attend:" "DarkOrange" "black")
+      (color-org-header "Engage:" "MediumPurple" "white")
       (color-org-header "Personal:" "red4" "white"))))
 
 (defun color-org-header (tag backcolor forecolor)
