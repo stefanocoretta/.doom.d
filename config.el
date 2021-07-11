@@ -90,7 +90,8 @@
  :prefix ("a" . "custom")
  :desc "Open agenda view" "a" #'org-agenda-list
  :desc "Search in bibliography" "b" #'ivy-bibtex
- :desc "Open bibliograpy file" "A" (lambda () (interactive) (find-file "/Users/ste/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/agenda.org"))
+ :desc "Open calendar" "c" #'cfw:open-org-calendar
+ :desc "Open agenda file" "A" (lambda () (interactive) (find-file "/Users/ste/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/agenda.org"))
  :desc "Open bibliograpy file" "B" (lambda () (interactive) (find-file "~/texmf/bibtex/bib/linguistics.bib"))
  :desc "Open file with external app" "e" #'open-in-external-app
  :desc "List GitHub issues" "f" #'forge-list-owned-issues)
@@ -196,6 +197,9 @@ _j_/_k_  move up/down      _u_ keep upper            _r_ resolve
 (map!
  :leader
  :desc "Smerge" "r" #'hydra-smerge/body )
+
+;; First day of the week
+(setq calendar-week-start-day 1) ; 0:Sunday, 1:Monday
 
 (setq deft-directory "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/deft"
       deft-extensions '("org", "md", "txt", "tex")
