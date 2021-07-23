@@ -290,7 +290,7 @@ This code is written to the =init.el= to select which modules to load.
        javascript        ; all(hope(abandon(ye(who(enter(here))))))
        ;;julia             ; a better, faster MATLAB
        ;;kotlin            ; a better, slicker Java(Script)
-       ;;(latex +latexmk)             ; writing papers in Emacs has never been so fun
+       (latex +latexmk)             ; writing papers in Emacs has never been so fun
        ;;lean              ; for folks with too much to prove
        ;;ledger            ; be audit you can be
        ;;lua               ; one-based indices? one-based indices
@@ -535,6 +535,10 @@ _j_/_k_  move up/down      _u_ keep upper            _r_ resolve
  :desc "Smerge" "r" #'hydra-smerge/body )
 #+end_src
 * Packages
+** AUCTeX
+#+begin_src emacs-lisp :tangle init.el
+(setq TeX-engine 'xetex)
+#+end_src
 ** Calfw
 #+begin_src emacs-lisp
 ;; First day of the week

@@ -146,7 +146,7 @@
        javascript        ; all(hope(abandon(ye(who(enter(here))))))
        ;;julia             ; a better, faster MATLAB
        ;;kotlin            ; a better, slicker Java(Script)
-       ;;(latex +latexmk)             ; writing papers in Emacs has never been so fun
+       (latex +latexmk)             ; writing papers in Emacs has never been so fun
        ;;lean              ; for folks with too much to prove
        ;;ledger            ; be audit you can be
        ;;lua               ; one-based indices? one-based indices
@@ -193,6 +193,8 @@
        :config
        literate
        (default +bindings +smartparens))
+
+(setq TeX-engine 'xetex)
 
 (defun open-in-external-app (&optional @fname)
   "Open the current file or dired marked files in external app.
