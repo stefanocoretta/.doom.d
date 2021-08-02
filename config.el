@@ -231,7 +231,7 @@ _j_/_k_  move up/down      _u_ keep upper            _r_ resolve
     ("Path"     99 magit-repolist-column-path nil)))
 
 (setq projectile-project-search-path
-      '("~/repos" "~/repos/conlang" "~/repos/research" "~/repos/software" "~/repos/typography" "~/repos/web" "~/repos/b4ss" "~/repos/many-speech" "~/repos/teaching")
+      '("~/repos" "~/repos/conlang" "~/repos/research" "~/repos/software" "~/repos/typography" "~/repos/web" "~/repos/b4ss" "~/repos/many-speech" "~/repos/teaching" "~/repos/intRo")
       projectile-auto-discover nil)
 
 (setq org-roam-directory "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/roam" )
@@ -288,7 +288,7 @@ _j_/_k_  move up/down      _u_ keep upper            _r_ resolve
 
 (setq bibtex-align-at-equal-sign t
       bibtex-comma-after-last-field t
-      bibtex-entry-format '(opt-or-altr required-fields numerical-fields realign last-comma sort-fields) )
+      bibtex-entry-format '(opts-or-alts required-fields numerical-fields realign last-comma sort-fields) )
 
 (setq-default bibtex-maintain-sorted-entries t)
 
@@ -302,6 +302,30 @@ _j_/_k_  move up/down      _u_ keep upper            _r_ resolve
 (setq org-ref-bibliography-notes "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/roam"
       org-ref-default-bibliography '("/Users/ste/texmf/bibtex/bib/linguistics.bib")
       org-ref-pdf-directory "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/biblio")
+
+;; define markdown citation formats
+(defvar markdown-cite-format)
+(setq markdown-cite-format
+      '(
+        (?\C-m . "[@%l]")
+        (?p . "[@%l]")
+        (?t . "@%l")
+        )
+      )
+
+;; wrap reftex-citation with local variables for markdown format
+(defun markdown-reftex-citation ()
+  (interactive)
+  (let ((reftex-cite-format markdown-cite-format)
+        (reftex-cite-key-separator "; @"))
+    (reftex-citation)))
+
+;; bind modified reftex-citation to C-c[, without enabling reftex-mode
+;; https://www.gnu.org/software/auctex/manual/reftex/Citations-Outside-LaTeX.html#SEC31
+(add-hook
+ 'markdown-mode-hook
+ (lambda ()
+   (define-key markdown-mode-map "\C-c[" 'markdown-reftex-citation)))
 
 (load! "lexurgy-mode.el")
 
