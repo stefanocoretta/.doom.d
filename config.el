@@ -234,10 +234,13 @@ _j_/_k_  move up/down      _u_ keep upper            _r_ resolve
       '("~/repos" "~/repos/conlang" "~/repos/research" "~/repos/software" "~/repos/typography" "~/repos/web" "~/repos/b4ss" "~/repos/many-speech" "~/repos/teaching" "~/repos/intRo")
       projectile-auto-discover nil)
 
-(setq org-roam-directory (file-truename "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/roam") )
+(setq org-roam-directory (file-truename "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/roam")
+      org-id-locations-file "/Users/ste/.emacs.d/.org-id-locations")
 
-(setq org-roam-capture-templates
-      '(("d" "default" plain #'org-roam-capture--get-point "%?" :file-name "${slug}" :head "#+title: ${title}\n#+date: %t\n" :unnarrowed t)))
+(use-package! org-roam-bibtex
+  :after org-roam
+  :config
+  (require 'org-ref)) ; optional: if Org Ref is not loaded anywhere else, load it here
 
 (setq ispell-dictionary "en")
 (remove-hook 'text-mode-hook #'spell-fu-mode)

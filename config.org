@@ -298,7 +298,7 @@ This code is written to the =init.el= to select which modules to load.
        ;;nim               ; python + lisp at the speed of c
        ;;nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
-       (org +roam)               ; organize your plain life in plain text
+       (org +roam2)               ; organize your plain life in plain text
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
@@ -642,16 +642,22 @@ Set projectile search path and disable automatic discover.
 Set =roam= directory.
 
 #+begin_src emacs-lisp
-(setq org-roam-directory (file-truename "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/roam") )
+(setq org-roam-directory (file-truename "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/roam")
+      org-id-locations-file "/Users/ste/.emacs.d/.org-id-locations")
 #+end_src
 
-Define custom template.
+Use =org-roam-bibtex=.
+
+#+begin_src emacs-lisp :tangle packages.el
+(package! org-roam-bibtex)
+#+end_src
 
 #+begin_src emacs-lisp
-(setq org-roam-capture-templates
-      '(("d" "default" plain #'org-roam-capture--get-point "%?" :file-name "${slug}" :head "#+title: ${title}\n#+date: %t\n" :unnarrowed t)))
+(use-package! org-roam-bibtex
+  :after org-roam
+  :config
+  (require 'org-ref)) ; optional: if Org Ref is not loaded anywhere else, load it here
 #+end_src
-
 ** Spell-fu
 Set =ispell-dictionary= and disable global activation.
 
