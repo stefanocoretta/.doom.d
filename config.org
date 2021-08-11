@@ -548,7 +548,7 @@ _j_/_k_  move up/down      _u_ keep upper            _r_ resolve
 Set =deft= directory.
 
 #+begin_src emacs-lisp
-(setq deft-directory "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/deft"
+(setq deft-directory "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/roam"
       deft-extensions '("org", "md", "txt", "tex")
       deft-recursive t)
 #+end_src
@@ -642,10 +642,15 @@ Set projectile search path and disable automatic discover.
 Set =roam= directory.
 
 #+begin_src emacs-lisp
-(setq org-roam-directory (file-truename "/Users/ste/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org")
+(setq org-roam-directory (file-truename "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/roam")
       org-id-locations-file "/Users/ste/.emacs.d/.org-id-locations"
       org-roam-capture-templates '(("d" "default" plain "%?"
                                     :if-new (file+head "${slug}.org" "#+title: ${title}\n#+date: %t\n#+filetags: \n\n")
+                                    :unnarrowed t)
+                                   ;; bibliography note template
+                                   ("r" "bibliography reference" plain "%?"
+                                    :if-new
+                                    (file+head "references/${citekey}.org" "#+title: ${title}\n")
                                     :unnarrowed t)))
 #+end_src
 
@@ -927,7 +932,7 @@ Set agenda file and other variables.
   (setq org-agenda-files '("/Users/ste/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/agenda.org"))
   (setq org-agenda-span 14)
   (setq org-agenda-start-on-weekday 1)
-  (setq org-directory "/Users/ste/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org"))
+  (setq org-directory "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/roam"))
 #+end_src
 
 #+begin_src emacs-lisp
