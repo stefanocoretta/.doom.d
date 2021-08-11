@@ -642,8 +642,11 @@ Set projectile search path and disable automatic discover.
 Set =roam= directory.
 
 #+begin_src emacs-lisp
-(setq org-roam-directory (file-truename "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/roam")
-      org-id-locations-file "/Users/ste/.emacs.d/.org-id-locations")
+(setq org-roam-directory (file-truename "/Users/ste/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org")
+      org-id-locations-file "/Users/ste/.emacs.d/.org-id-locations"
+      org-roam-capture-templates '(("d" "default" plain "%?"
+                                    :if-new (file+head "${slug}.org" "#+title: ${title}\n#+date: %t\n#+filetags: \n\n")
+                                    :unnarrowed t)))
 #+end_src
 
 Use =org-roam-bibtex=.
@@ -924,7 +927,7 @@ Set agenda file and other variables.
   (setq org-agenda-files '("/Users/ste/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/agenda.org"))
   (setq org-agenda-span 14)
   (setq org-agenda-start-on-weekday 1)
-  (setq org-directory "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/roam"))
+  (setq org-directory "/Users/ste/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org"))
 #+end_src
 
 #+begin_src emacs-lisp

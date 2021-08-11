@@ -234,8 +234,11 @@ _j_/_k_  move up/down      _u_ keep upper            _r_ resolve
       '("~/repos" "~/repos/conlang" "~/repos/research" "~/repos/software" "~/repos/typography" "~/repos/web" "~/repos/b4ss" "~/repos/many-speech" "~/repos/teaching" "~/repos/intRo")
       projectile-auto-discover nil)
 
-(setq org-roam-directory (file-truename "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/roam")
-      org-id-locations-file "/Users/ste/.emacs.d/.org-id-locations")
+(setq org-roam-directory (file-truename "/Users/ste/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org")
+      org-id-locations-file "/Users/ste/.emacs.d/.org-id-locations"
+      org-roam-capture-templates '(("d" "default" plain "%?"
+                                    :if-new (file+head "${slug}.org" "#+title: ${title}\n#+date: %t\n#+filetags: \n\n")
+                                    :unnarrowed t)))
 
 (use-package! org-roam-bibtex
   :after org-roam
@@ -366,7 +369,7 @@ _j_/_k_  move up/down      _u_ keep upper            _r_ resolve
   (setq org-agenda-files '("/Users/ste/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/agenda.org"))
   (setq org-agenda-span 14)
   (setq org-agenda-start-on-weekday 1)
-  (setq org-directory "/Users/ste/Library/Mobile Documents/com~apple~CloudDocs/drive/roam"))
+  (setq org-directory "/Users/ste/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org"))
 
 (add-hook 'org-agenda-finalize-hook
   (lambda ()
